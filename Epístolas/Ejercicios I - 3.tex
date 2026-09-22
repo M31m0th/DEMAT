@@ -1,0 +1,353 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{xypic}
+
+\textheight=25cm \textwidth=18cm \topmargin=-2cm \oddsidemargin=-1cm
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+
+\newcommand{\Co}{\mathfrak C}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\Ext}{\mathrm{ext}}
+\newcommand{\F}{\mathfrak F}
+\newcommand{\h}{\mathrm h}
+\newcommand{\Int}{\mathrm{int}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\US}{\mathbb{S}^2}
+\newcommand{\x}{\mathrm x}
+\newcommand{\xk}{(\x_k)_{k\in \N}}
+\newcommand{\y}{\mathrm y}
+\newcommand{\z}{\mathrm z}
+\newcommand{\Z}{\mathbb Z}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\lbil}{\left <}
+\newcommand{\rbil}{\right >}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\mTo}{\longmapsto}
+
+\begin{document}
+
+\pagestyle{empty}
+\begin{center}
+{\textsc{Cálculo Diferencial e Integral III} \\
+\medskip 
+\large{Ejercicios I - 3 \\
+Luis David Uicab Martínez \\
+(Funciones entre espacios euclidianos)}}
+\end{center}
+\bigskip
+
+\begin{enumerate}
+    \item Analiza la convergencia de las sucesiones $\xk$ en $\R^2$ con $\x_k=(x_k,y_k)$.
+        \begin{enumerate}[(1)]
+            \item $x_k=r^k, y_k=r^{1/k}$ con $0<r<1$.
+            \item $x_k=(1+1/k)^k, y_k=1/\sqrt{k}$.
+        \end{enumerate}
+    \textbf{Solución.}
+    \begin{enumerate}[(a)]
+        \item Puesto que $\abs{r}<1$, sabemos que $\lim_{k\to \infty}r^k\rightarrow 0$. Puesto que además, $r>0$, se sigue que $\lim_{k\to \infty}\sqrt[k]{r}\rightarrow 1$.
+            En consecuencia,
+            \[
+                \lim_{k\to \infty}\x_k = \left(\lim_{k\to \infty} x_k,\lim_{k\to \infty} y_k\right) = (0,1).
+            \]
+            \item Notemos que $\lim_{k\to \infty}(1+1/k)^k=e$. Por otra parte, tenemos que $y_k=(1/k)^{1/2}$. Así, $\lim_{k\to \infty}y_k=0$. De ello, concluimos
+            \[
+                \lim_{k\to \infty}\x_k = \left(\lim_{k\to \infty} x_k,\lim_{k\to \infty} y_k\right) = (e,0).
+            \]
+            \hfill $\blacktriangle$
+    \end{enumerate}
+
+
+    \item Analiza la convergencia de la sucesión $\xk$ en $\R^2$ con 
+        $x_k=1+(-1)^k, y_k=1 + 1/2 + \cdots + 1/k$.
+        \textbf{Solución.} Notemos que $y_k$ es la sucesión de sumas parciales de la seria armónica la cual no converge. Puesto que $y_k$ no converge, concluimos que el límite de $\x_k$ no existe. $\blacktriangle$
+
+    \newpage
+    \item Analiza la existencia del l\'imite de las siguientes funciones en los puntos dados:
+        \begin{enumerate}[(1)]
+            \item $\displaystyle{f(x,y) = \left( \frac{x}{x^2+y^2},\frac{-y}{x^2+y^2} \right)}$, 
+                $\x_0=(0,0)$.
+            \item $f(x,y) = (e^x\cos(x),e^x\sen(y))$, $\x_0=(0,0)$.
+        \end{enumerate} 
+    \textbf{Solución.}
+    \begin{enumerate}[(a)]
+        \item Procedamos por contradicción. Supongamos que existe el límite de $f(x,y)$ en $\x_0$. Es decir, existe $L \in \R^2$ tal que para toda sucesión $(\x_k)_{k\in \N}$, si $\lim_{k\to \infty}\x_k=(0,0)$, se cumple que $\lim_{k\to \infty}f(\x_k)=L$.
+            Tomemos $\x_k=(1/k,0)$ la cual converge a 0. Así,
+            \[
+                f(\x_k) = \left(\frac{\frac{1}{k}}{\left(\frac{1}{k}\right)^2+0^2},\frac{-0}{\left(\frac{1}{k}\right)^2+0^2}\right)=(k,0),
+            \]
+            de lo que obtenemos una contradicción, puesto que $(k,0)$ no converge. En consecuencia, el límite de $f(x,y)$ en $\x_0$ no existe.
+        \item Sea $(\x_k=(x_k,y_k))_{k\in \N}$ tal que $\lim_{k\to \infty}\x_k=(0,0)$ arbitraria. De ello, se sigue que
+            \[
+                \lim_{k\to \infty}x_k=0 \text{ y } \lim_{k\to \infty}y_k = 0
+            \] 
+            Puesto que $e^x$ y $\cos x$ son funciones continuas, afirmamos que $e^x\cos x$ también es continua.
+            De este hecho obtenemos que el límite de la sucesión de las imágenes de $\x_k$ en la función ya mencionada, será la función evaluada en el límite de la sucesión $\x_k$, obteniendo así que 
+            \[
+                \lim_{k\to \infty}e^{x_k}\cos(x_k) = e^{\lim_{k\to \infty}x_k}\cos (\lim_{k\to \infty}x_k) = e^0\cos 0 = 1.
+            \]
+            Por otra parte, $e^x\sin y$ es continua, dado que $\sin y$ lo es. Así,
+            \[
+                \lim_{k\to \infty}e^{x_k}\sin(x_k) = e^{\lim_{k\to \infty}x_k}\sin(\lim_{k\to \infty}y_k) = e^0\sin 0 = 0.
+            \]
+            De las igualdades anteriores, se sigue que $\lim_{k\to \infty}f(\x_k)=(1,0)$. Puesto que lo anterior se cumplió para una sucesión que tiende a 0 arbitraria, afirmamos que se cumple para toda sucesión $\x_k$ que converge a $(0,0)$, de lo que concluimos, el límite de $f(x,y)$
+            en $(0,0)$ existe y además es $(1,0)$. \hfill $\blacktriangle$
+    \end{enumerate}
+
+\newpage
+\item Analiza la existencia del l\'imite de la función
+$\displaystyle{f(x,y) = \left( \frac{\sen(x)}{x},y\sen(1/y) \right)}$, en el punto $(0,0)$.
+\textbf{Solución.} Por L'Hôpital tenemos que
+\[
+\lim_{x\to 0}\frac{\sin x}{x} =\lim_{x\to 0} \frac{\cos x}{1} = 1.
+\]
+Por otra parte, tenemos que
+\begin{align*}
+    -1\leq \sin\left(\frac{1}{y}\right) \leq 1 &\implies -\abs{y}\leq \sin\left(\frac{1}{y}\right) \leq \abs{y} \\
+    &\implies 0 \leq \abs{\sin\left(\frac{1}{y}\right)} \leq \abs{y},
+\end{align*}
+luego, puesto que $\lim_{y\to 0}0=\lim_{y\to 0}\abs{y}$, por el lema del sandwich y de la desigualdad anterior, $\lim_{y\to 0}y\sin\left(\frac{1}{y}\right)=0$. Finalmente, afirmamos que
+\[
+    \lim_{(x,y)\to 0}f(x,y) = \left(\lim_{(x,y)\to 0}\frac{\sin x}{x},\lim_{(x,y)\to 0} y\sin\left(1/y\right)\right) = \left(1,0\right).
+\]
+\hfill $\blacktriangle$
+
+
+\item Analiza la existencia del l\'imite de las siguientes funciones en los puntos dados:
+\begin{enumerate}[(1)]
+\item $\displaystyle{f(x,y) = \frac{x^3y^2}{x^6+y^4}}$, $\x_0=(0,0)$.
+\item $\displaystyle{f(x,y) = \frac{x^2(y-1)}{x^4+(y-1)^2}}$, $\x_0=(0,1)$.
+\end{enumerate}
+\textbf{Solución.}
+\begin{enumerate}[(a)]
+    \item Sea $(a_k)_{k\in \N}=(x_k,x_k^{3/2})_{k\in\N}$ tal que $(a_n)_{x_k}$ con $x_k=1/k$. Así, $(a_k)_k\in \N$ converge a $(0,0)$. Notemos que
+    \[
+    f(a_k)=\frac{x_k^3x_k^3}{x_k^6x^6}=\frac{1}{2},
+    \]
+    de lo que sigue, $\lim_{k\to \infty}f(a_k)=1/2$. Por otra parte, si tomamos la sucesión $(1/k,1/k)_{k\in \N}$, la cual es convergen a 0, obtenemos que
+    \[
+    f\left(\frac{1}{k},\frac{1}{k}\right) = \frac{\frac{1}{k^5}}{\frac{1}{k^6}+\frac{1}{k^4}} = \frac{k}{1+k^2}.
+    \]
+    Así,
+    \[
+    \lim_{k\to \infty}f\left(\frac{1}{k},\frac{1}{k}\right)= \lim_{k\to \infty}\frac{k}{1+k^2} = 0,
+    \]
+    y puesto que tenemos dos sucesiones que convergen a distintos valores, afirmamos que $\lim_{\x\to \x_0}f(x,y)$ no existe.
+    \item Sea $(a_k)_{k\in \N}=(1/k,1+1/k)_{n\in \N}$ donde afirmamos que $(a_k)_{k\in \N}$ converge a $(0,1)$. Luego, notemos que
+    \[
+    \lim_{k\to \infty}f(a_k) = \lim_{k\to \infty}\frac{1/k^3}{1/k^4+1/k^2} = \lim_{k\to \infty}\frac{k}{1+k^2} = 0.
+    \]
+    Ahora, notemos que $(1/k^{1/2},1+1/k)_{k\in \N}$ también converge a $(0,1)$. Luego, tenemos que
+    \[
+    \lim_{k\to \infty}f\left(1/k^{1/2},1+1/k\right) = \lim_{k\to \infty}\frac{1/k^2}{1/k^2+1/k^2} = \lim_{k\to \infty}\frac{1/k^2}{2/k^2} = 1/2.
+    \]
+    En consecuencia, dado que distan los límites, concluimos que $\lim_{\x \to \x_0}f(\x)$ no existe. \hfill $\blacktriangle$ 
+    
+\end{enumerate}
+
+
+
+\newpage
+\item Analiza la existencia del l\'imite de las siguientes funciones en los puntos dados:
+\begin{enumerate}[(1)]
+\item $\displaystyle{f(x,y) = \left( \frac{x^3-4}{x^2+1}, \frac{y^2-4}{3y-6} \right)}$, 
+$\x_0=(2,2)$.
+\item $\displaystyle{f(x,y) = \left( x^{3/2}, 1 - \frac{1}{2}y^2 \right)}$, $\x_0=(0,0)$.
+\end{enumerate} 
+\textbf{Solución.}
+\begin{enumerate}[(a)]
+    \item Puesto que el cociente entre polinomios es continuo, y dado que la expresión de la coordenada en $x$ está bien definida para $x=2$, afirmamos que
+    \[
+    \lim_{x\to 2}\frac{x^3-4}{x^2+1} = \frac{8-4}{4+1} = \frac{4}{5}. 
+    \]
+    Por otra parte, notemos que
+    \[
+    \frac{y^2-4}{3y-6} = \frac{(y+2)(y-2)}{3(y-2)} = \frac{y+2}{3}, \quad \forall y \in \R\setminus\{2\}.
+    \]
+    Así,
+    \[
+    \lim_{y\to 2}\frac{y^2-4}{3y-6} = \lim_{y\to 2}\frac{y+2}{3} = \frac{4}{3}.
+    \]
+    En consecuencia, de los resultados de ambos límites concluimos que
+    \[
+    \lim_{x\to x_0}f(x,y) = \left(\frac{4}{5},\frac{4}{3}\right).
+    \]
+    \item Tomemos una sucesión arbitaria $(x_k,y_k)_{k\in \N}$ contenida en el dominio de $f$ que converja a $(0,0)$. Puesto que, tanto $x^{3/2}$ y $1-y^2/2$ son funciones continuas,
+    se sigue que
+    \[
+    \lim_{k\to \infty}x_k^{3/2}=\left(\lim_{k\to \infty}x_k\right)^{3/2} = 0,
+    \]
+    y
+    \[
+    \lim_{k\to \infty}1-y_k^2/2 = 1-\left(\lim_{k\to \infty}y_k\right)^2/2 = 1.
+    \]
+    Así, concluimos que $\lim_{\x\to \x_0}f(\x)=(0,1)$.
+    \hfill $\blacktriangle$
+    
+\end{enumerate}
+
+\newpage
+\item Analiza la existencia del l\'imite de las siguientes funciones en los puntos dados:
+\begin{enumerate}[(1)]
+\item $\displaystyle{f(x,y,z) = \frac{xy^2}{\sqrt{x^4+y^4+z^2}+z^4}}$, $\x_0=(0,0,0)$.
+\item $\displaystyle{f(x,y) = \left( \frac{\cos(x)-1}{x}, \frac{\sen(y)}{y} \right)}$, 
+$\x_0=(0,0)$.
+\end{enumerate}
+\textbf{Solución.}
+\begin{enumerate}[(a)]
+    \item En principio, notemos que
+    \begin{align*}
+        \sqrt{x^4+y^4+z^2} + z^4  &\geq \sqrt{x^4+y^4}. \tag{1}
+    \end{align*}
+    Por la desigualdad de la media aritmética-media geométrica, tenemos
+    \begin{align*}
+        \frac{x^4+y^4}{2}\geq \sqrt{x^4y^4} &\implies x^4+y^4 \geq 2x^2y^2 \\
+        &\implies \sqrt{x^4+y^4} \geq \sqrt{2}\abs{x}\abs{y}.
+    \end{align*}
+    Así, por la desigualdad anterior y la mencionada en $(1)$ se sigue que
+    \[
+        \sqrt{x^4+y^4+z^2} + z^4 \geq \sqrt{2}\abs{x}\abs{y},
+    \]
+    y en consecuencia,
+    \[
+    0\leq \abs{f(x,y,z)} = \frac{\abs{x}y^2}{\sqrt{x^4+y^4+z^2} + z^4} \leq \frac{\abs{x}y^2}{\sqrt{2}\abs{x}\abs{y}} = \frac{\abs{y}}{\sqrt{2}}. \tag{2}
+    \]
+    Notemos que la última expresión está particularmente bien definida si y solo si $x,y\neq 0$. Sea $(x_k,y_k,z_k)_{k\in \N}\subset \text{dom}(f)$ convergente a 0.
+    Si $x_k=0$ o $y_k=0$, se tiene que
+    \[
+    f(0,y_k,z_k)= \frac{0\cdot y_k^2}{\sqrt{x_k^4+y_k^4+z_k^2} + z_k^4} = 0 = \frac{x_k\cdot 0^2}{\sqrt{x_k^4+y_k^4+z_k^2} + z_k^4} = f(x_k,0,z_k),
+    \]
+    y en consecuencia, para tales casos, $\lim_{k\to \infty}f(x_k,y_k,z_k)=(0,0,0)$. Procederemos a enfocarnos en las sucesiones convergentes a 0 donde $x_k,y_k\neq 0$.
+    Para dichas sucesiones, la última desigualdad en $(2)$ está bien definida. Notemos que, puesto que $(x_k,y_k,z_k)\rightarrow (0,0,0)$, en particular $y_k \rightarrow 0$.
+    De ello, $\lim_{k\to \infty}\abs{y_k}/\sqrt{2}=0$. Luego, del límite ya mencionado, del lema del sandwich y de la desigualda en $(2)$
+    \[
+    \lim_{k\to \infty}\abs{f(x_k,y_k,z_k)}=(0,0,0),
+    \]
+    que por el ejercicio número 8, es equivalente a decir
+    \[
+    \lim_{k\to \infty}f(x_k,y_k,z_k)=(0,0,0).
+    \]
+    De la ya dicho, concluimos que $\lim_{\x\to \x_0}f(\x)=0$. \hfill $\blacktriangle$
+
+
+    \newpage
+    \item Notemos que por L'Hôpital 
+    \[
+    \lim_{x\to 0}\frac{\cos(x)-1}{x} = \lim_{x\to 0}\frac{-\sin(x)}{1} = 0,
+    \]
+    y
+    \[
+    \lim_{y\to 0}\frac{\sin(y)}{y} = \lim_{y\to 0}\frac{\cos(y)}{1}=1,
+    \]
+    y en consecuencia, $\lim_{\x\to \x_0}f(\x)=(0,1)$. \hfill $\blacktriangle$
+\end{enumerate}
+
+\item Supongamos que $\Omega\subset \R^n$, $f\in \F(\Omega,\R^m)$ y 
+$\x_0\in \Omega'$. Prueba que 
+$\displaystyle{\lim_{\x\to \x_0} f(\x) = 0}$ si y s\'olo si 
+$\displaystyle{\lim_{\x\to \x_0} \norm{f(\x)} = 0}$. \\
+\textbf{Demostración.} Sea $\varepsilon > 0$ arbitrario. Puesto que $\lim_{\x\to \x_0}f(\x) = 0$ se sigue que
+existe $\delta > 0$ tal que
+\[
+\norm{\x-\x_0}<\delta \implies \norm{f(\x)}< \varepsilon.
+\]
+Como $\norm{\x}=\abs{\norm{\x}}$ y $\norm{f(\x)}=\abs{\norm{f(\x)}}$, es inmediato que
+\[
+\norm{\x}<\delta \implies \norm{f(\x)}< \varepsilon \iff \abs{\norm{\x}}<\delta \implies \abs{\norm{f(\x)}}< \varepsilon. \tag{1}
+\]
+y puesto que la segunda implicación es la definición de que $\lim_{\x\to \x_0}\abs{f(x)}=0$, de la equivalencia en $(1)$ se sigue el resultado. \hfill $\blacktriangle$
+
+\newpage
+\item Supongamos que $f:\Omega\subset \R^n\To \R^m$, $\x_0\in \R^n$ y 
+$L\in \R^m$. Definamos $\Omega_0=\Omega-\x_0:=\{ \x-\x_0 : \x\in \Omega \}$ y $g:\Omega_0\To \R^m$ por $g(\h)=f(\x_0+\h)$, para cada $\h\in \Omega_0$. Demuestra que:
+\begin{enumerate}[(1)]
+\item $\x_0\in \Omega'$ si y s\'olo si $0\in \Omega'_0$.
+\item $\displaystyle{L=\lim_{\x\to \x_0} f(\x)}$ si y s\'olo si 
+$\displaystyle{L=\lim_{\h\to 0} g(\h)}$.
+\end{enumerate}
+\textbf{Demostración.}
+\begin{enumerate}[(a)]
+    \item Notemos que
+    \begin{align*}
+        0 \in \Omega_0 &\iff 0=\x_0-\x_0 \in \Omega_0 \\
+        &\iff \x_0 \in \Omega.
+    \end{align*}
+    \item Sea $\varepsilon>0$. Supongamos que $\lim_{\x\to\x_0}f(\x)$. Así, existe $\delta >0$ tal que, para $\x\in \Omega$:
+    \[
+        \norm{\x-\x_0}<\delta \implies \norm{f(\x)-L}<\varepsilon. \tag{1}
+    \]
+    Notemos que si tomamos $h=\x-\x_0$, de la implicación anterior, se sigue que
+    \begin{align*}
+        \norm{h}=\norm{\x-\x_0}<\delta \implies \norm{g(h)-L} &=\norm{f(x_0+\h)-L}\\
+        &=\norm{f(\x_0+\x-\x_0)-L} \\
+        &=\norm{f(\x)-L}<\varepsilon,
+    \end{align*}
+    de lo que afirmamos
+    \[
+    \lim_{\h\to 0}g(\h)=L.
+    \]
+    Tomemos ahora como hipótesis la igualdad anterior. Así, existe $\delta > 0$ tal que, para $\h \in \Omega_0$:
+    \[
+        \norm{h}<\delta \implies \norm{g(h)-L}<\varepsilon.
+    \]
+    Puesto que $h \in \Omega_0$, se sigue que $h=\x-\x_0$ para algún $\x \in \Omega$. Así, tenemos que
+    \begin{align*}
+        \norm{\x-\x_0}=\norm{h}<\delta \implies \norm{f(\x)-L} &= \norm{f(\x_0+\x-\x_0)-L} \\
+        &= \norm{f(\x_0+h)-L} \\
+        &= \norm{g(h)-L} < \varepsilon.
+    \end{align*}
+    En consecuencia, concluimos que
+    \[
+    \lim_{\x\to\x_0}f(\x)=L,
+    \]
+    con lo que damos el resultado por demostrado. \hfill $\blacktriangle$
+
+\end{enumerate}
+
+\newpage
+\item Si $L:\R^n\To \R^m$ es una funci\'on lineal, prueba que si
+\[ \lim_{\x\to 0} \frac{\norm{L(\x)}}{\norm{\x}} = 0 \]
+entonces $L$ es la funci\'on constante cero.
+\begin{enumerate}
+    \item Sea $\{e_1,...,e_n\}$ la base canónica de $\R^n$. Así, para $\x=(x_1,...,x_n) \in \R^n$, se sigue que
+    \[
+    L(\x) = L\left(\sum_{i=1}^{n}x_ie_i\right) = x_iL(e_i), \tag{1}
+    \]
+    esto último por linealidad de $L$. Sea $k$ tal que
+    \[
+    \norm{L(e_k)} = \max\{\norm{L(e_i)}:i\in \{1,...,n\}\}.
+    \]
+    Luego, puesto que $\lim_{\x\to 0}\norm{L(\x)}/\norm{\x}= 0$, se sigue que, dado $\varepsilon > 0$ arbitrario,
+    existe $\delta>0$ tal que
+    \[
+    \norm{\x}<\delta \implies \frac{\norm{L\left(\norm{x}\right)}}{\norm{\x}} < \varepsilon.
+    \]
+    Puesto que $\norm{\delta e_k/2} < \delta$, de la implicación previa, de la linealidad de $L$ y del hecho de que la
+    norma saca escalares, obtenemos que
+    \begin{align*}
+        \norm{L(e_k)} &= \frac{\norm{L(e_k)}}{\norm{e_k}} \\
+        &= \frac{\delta/2}{\delta/2}\cdot\frac{\norm{L(e_k)}}{\norm{e_k}} \\
+        &= \frac{\norm{\delta L(e_k)/2}}{\norm{\delta e_k/2}} \\
+        &= \frac{\norm{L(\delta e_k/2)}}{\norm{\delta e_k/2}} \\
+        &< \varepsilon.
+    \end{align*}
+    Puesto que la igualdad anterior se cumple para todo $\varepsilon > 0$, afirmamos que $\norm{L(e_k)}=0$. Luego,
+    como $\norm{L(E_k)}\geq \norm{L(e_i)} \geq 0$ para toda $i \in \{1,...,n\}$, se sigue
+    \[
+    \norm{L(e_i)}=0, \quad \forall i \in \{1,...,n\}.
+    \]
+    Lo anterior pasa si y solo si $L(e_i)=0$, con lo que, por la igualdad en $(1)$ se sigue el resultado. \hfill $\blacksquare$
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

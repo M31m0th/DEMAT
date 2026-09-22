@@ -1,0 +1,311 @@
+\documentclass[12pt,a4paper]{article}
+% ------------------------------------------------------
+% Idioma y codificación
+% ------------------------------------------------------
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ------------------------------------------------------
+% Tipografía y formato
+% ------------------------------------------------------
+\usepackage{lmodern}    % Fuente Latin Modern
+\usepackage{microtype}  % Mejor espaciado
+\usepackage{xcolor}     % Colores
+\setlength{\parindent}{0pt} %eliminar sangría
+\definecolor{UGblue}{RGB}{0,33,71}
+\definecolor{UGgold}{RGB}{212,175,55}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc,decorations.pathreplacing,angles,quotes}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{caption}
+\usepackage{multicol} %Permite hacer columnas de texto
+
+% ------------------------------------------------------
+% Matemáticas
+% ------------------------------------------------------
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+%\usepackage{physics}
+
+% ------------------------------------------------------
+% Otros paquetes útiles
+% ------------------------------------------------------
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=UGblue,
+    urlcolor=UGgold,
+    citecolor=UGblue
+}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{multicol}
+
+% ------------------------------------------------------
+% Teoremas, definiciones, etc.
+% ------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}[section]
+\newtheorem{prop}[teo]{Proposición}
+\newtheorem{lema}[teo]{Lema}
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definición}
+\theoremstyle{remark}
+\newtheorem{ejemplo}[teo]{Ejemplo}
+\newtheorem{obs}[teo]{Observación}
+
+% ------------------------------------------------------
+% Comandos útiles
+% ------------------------------------------------------
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\x}{\mathrm x}
+\newcommand{\y}{\mathrm y}
+\newcommand{\Int}{\mathrm{int}}
+\newcommand{\Ext}{\mathrm{ext}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\llaves}[1]{\left\{#1\right\}}
+\newcommand{\parentesis}[1]{\left(#1\right)}
+\newcommand{\corchetes}[1]{\left[#1\right]}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\qedt}{\hfill $\blacktriangle$}
+\renewcommand{\qed}{\hfill $\blacksquare$}
+
+
+
+\begin{document}
+\textsc{\textbf{Tarea 2 Probabilidad.}}\\
+    \textsc {Profesor Antonio Murillo Salas.\\
+    Hecho por Luis David uicab Martínez.\\}
+    09 de septiembre de 2026\\
+    \rule{15cm}{4pt}\\[0.3cm]
+    
+\section*{Ejercicio 1.}
+Considere la siguiente función
+\[
+f(x) =
+\begin{cases}
+    c(4x - x^2), & \text{si } 0 < x < 4,\\
+    0, & \text{en otro caso}.
+\end{cases}
+\]
+\begin{enumerate}
+    \item[(i)] Determine el valor de la constante $c$ de modo que $f$ sea una función de densidad.
+    \item[(ii)] Sea $X$ la variable aleatoria con función de densidad $f$ (con el valor de $c$ encontrado en (i)). Encuentre la función de distribución de $X$.
+    \item[(iii)] Determine la media y la varianza de $X$.
+\end{enumerate}
+\textbf{Solución.}
+\begin{enumerate}
+    \item[(i)] Notemos que
+        \begin{align*}
+            \int_{-\infty}^{\infty}f(x)dx &= \int_{0}^{4}c\left(4x-x^2\right)dx \\
+            &= c\left(4\cdot \frac{x^2}{2}-\frac{x^3}{3}\right)\big|_{x=0}^{4} \\
+            &= c\cdot\frac{32}{3}.
+        \end{align*}
+    \item[(ii)] Para la función de distribución, calculamos la siguiente integral
+        \begin{align*}
+            F_X(x) &= \int_{-\infty}^{x}f(t)dt \\
+            &= \int_{0}^{x}\frac{3}{32}\left(4t-t^2\right)dt \\
+            &= \frac{3}{32}\int_{0}^{x}\left(4\cdot \frac{t^2}{2}-\frac{t^3}{3}\right)\big|_{t=0}^{x} \\
+            &= \frac{6x^2-x^3}{32},
+        \end{align*}
+        dónde $x\in (0,4)$. Si $x<0$, $F_X(x)=0$ y si $x>4$, $F_X(x)=1$.
+    \item[(iii)] Tenemos que
+        \begin{align*}
+            \E\left(X\right) &= \int_{-\infty}^{\infty}xf(x)dx \\
+            &= \frac{3}{32}\int_{0}^{4}\left(4x^2-x^3\right)dx \\
+            &= \frac{3}{32}\left(4\cdot\frac{x^3}{3}-\frac{x^4}{4}\right)\Big|_{x=0}^{4} \\
+            &= 2.
+        \end{align*}
+        Por otra parte,
+        \begin{align*}
+            \E\left(X^2\right) &= \int_{-\infty}^{\infty}x^2f(x)dx \\
+            &= \frac{3}{32}\int_{0}^{4}\left(4x^3-x^4\right)dx \\
+            &= \frac{3}{32}\left(4\cdot\frac{x^4}{4}-\frac{x^5}{5}\right)\Big|_{x=0}^4 \\
+            &= 4.8
+        \end{align*}
+        En consecuencia,
+        \[
+        \text{Var}(X) = \E(X^2)-\E(X)^2 = 4.8 - 2^2 = 0.8
+        \]
+        \hfill $\blacktriangle$
+\end{enumerate}
+Puesto que queremos que $f$ sea función de distribución, la integral anterior ha de valor 1, y en consecuencia, $c=3/32$.
+
+
+\section*{Ejercicio 2.}
+Sea $X$ una variable aleatoria continua con función de distribución $F$ y sea $p \in (0,1)$. El \textit{percentil} $100$ \textit{p-ésimo} (o percentil $100p$), denotado por $P_p$, se define como el valor que satisface
+\[
+\P(X \leq P_p) = p.
+\]
+Si $X$ es una variable aleatoria exponencial con parámetro (tasa) $\lambda > 0$, determine una expresión para $P_p$ con $p \in (0, 1)$.\\
+\textbf{Solución.} \\
+Por hipótesis, sabemos que $X$ tiene función de densidad
+\[
+f(x)=
+\begin{cases}
+    \int_{-\infty}^{x}\lambda e^{-\lambda x}dx, &\text{ si } x > 0 \\
+    0, &x\leq 0
+\end{cases}
+\]
+Así, tomando $u=-\lambda t$, se tiene que $dt=-du/\lambda$ y en consecuencia
+\begin{align*}
+    F_X(x) &= \int_{-\infty}^{x}f(t)dt \\
+    &= \int_{0}^{x}\lambda e^{-\lambda t}dt \\
+    &= -\int_{0}^{x}e^{u}du \\
+    &=-\left(e^u\right)\Big|_{t=0}^x \\
+    &=-\left(e^{-\lambda t}\right)\Big|_{t=0}^x \\
+    &= 1-e^{\lambda x}.
+\end{align*}
+Luego, notemos que
+\begin{align*}
+    \P(X\leq P_n)=p &\iff F_X(P_n)=p \\
+    &\iff 1-e^{-\lambda P_n}=p \\
+    &\iff -\lambda P_n = \ln(1-p) \\
+    &\iff P_n = -\frac{\ln(1-p)}{\lambda},
+\end{align*}
+obteniendo así el resultado buscado. \hfill $\blacktriangle$
+
+\section*{Ejercicio 3.}
+En ciertos sistemas, un cliente es asignado a una de dos prestadoras de servicio. Si el tiempo para que el cliente sea atendido por la prestadora de servicio $i$ tiene una distribución exponencial con parámetro $\lambda_i(i = 1, 2)$, y $p$ es la proporción de todos los clientes atendidos por la prestadora de servicio 1, entonces la función de densidad de probabilidad de
+\[
+X = "\text{tiempo para ser atendido de un cliente seleccionado al azar}"
+\]
+es
+\[
+f(x; \lambda_1, \lambda_2, p) =
+\begin{cases}
+    p\lambda_1e^{-\lambda_1x} + (1 - p) \lambda_2e^{-\lambda_2x}, & \text{si } x \geq 0,\\
+    0, & \text{en otro caso}.
+\end{cases}
+\]
+\begin{enumerate}
+    \item[(i)] ¿Cuál es la función de distribución asociada a $X$?
+    \item[(ii)] Determine $\E(X)$.
+    \item[(iii)] Encuentre $\Var(X)$.
+\end{enumerate}
+\textbf{Solución.}
+\begin{enumerate}
+    \item[(i)] Tenemos que
+        \begin{align*}
+            F_X(x) &= \int_{-\infty}^{x}f(t)dt \\
+            &= \int_{0}^{x}\left(p\lambda_1e^{-\lambda_1t} + (1 - p) \lambda_2e^{-\lambda_2t}\right)dt \\
+            &= p\int_{0}^{x}\left(\lambda_1e^{-\lambda_1t}\right)dt + (1-p)\int_{0}^{x}\left(\lambda_2e^{-\lambda_2t}\right)dt \\
+            &= p(1-e^{-\lambda_1 x}) + (1-p)(1-e^{-\lambda_2 x}) \\
+            &= 1 - pe^{-\lambda_1 x} - (1-p)e^{-\lambda_2 x}.
+        \end{align*}
+    \item[(ii)] Sabemos que, para una variable aleatoria $Y$ exponencial de parámetro $\lambda > 0$, (con $u=-\lambda x$) se tiene que
+        \begin{align*}
+            \E(Y) &= \int_{-\infty}^{\infty}xf(x)dx \\
+            &= \int_{0}^{\infty}x\lambda e^{-\lambda x}dx \\
+            &= \frac{1}{\lambda}\int_{0}^{\infty}ue^udu \\
+            &= \frac{1}{\lambda}\left(ue^u-e^u\right)\Big|_{x=0}^\infty \\
+            &= \frac{1}{\lambda}\left(e^{-\lambda x}(-\lambda x-1)\right)\Big|_{x=0}^\infty \\
+            &= \frac{1}{\lambda}.
+        \end{align*}
+        Así, afirmamos que, para la variable aleatoria $X$ original
+        \begin{align*}
+            \E(X) &= \int_{-\infty}^{\infty}xf(x)dx \\
+            &= \int_{0}^{\infty}\left(p\lambda_1xe^{-\lambda_1x} + (1 - p) \lambda_2xe^{-\lambda_2x}\right)dx \\
+            &= p\int_{0}^{\infty}\left(\lambda_1xe^{-\lambda_1x}\right)dx + (1-p)\int_{0}^{\infty}\left(\lambda_2xe^{-\lambda_2x}\right)dx \\
+            &= \frac{p}{\lambda_1} + \frac{1-p}{\lambda_2}.
+        \end{align*}
+    \item[(iii)] Nuevamente, notemos que para $Y$ (usando nuevamente el cambio de variable $u=-\lambda x$)
+        \begin{align*}
+            \E[Y^2] &= \int_{-\infty}^{\infty}x^2f(x)dx \\
+            &= \int_{0}^{\infty}x^2\lambda e^{-\lambda x}dx \\
+            &= \frac{1}{\lambda}\int_{0}^{\infty}tue^udu \\
+            &= -\frac{1}{\lambda^2}\int_{0}^{\infty}u^2e^udu \\
+            &= -\frac{1}{\lambda^2}\left(u^2e^u+2(e^u(1-u))\right)\Big|_{x=0}^\infty \\
+            &= -\frac{1}{\lambda^2}\left((-\lambda x)^2e^{-\lambda x}+2(e^{-\lambda x}(1+\lambda x))\right)\Big|_{x=0}^\infty \\
+            &= \frac{2}{\lambda^2},
+        \end{align*}
+        y en consecuencia
+        \begin{align*}
+            \E(X^2) &= \int_{-\infty}^{\infty}x^2f(x)dx \\
+            &= \int_{0}^{\infty}\left(p\lambda_1x^2e^{-\lambda_1x} + (1 - p) \lambda_2x^2e^{-\lambda_2x}\right)dx \\
+            &= p\int_{0}^{\infty}\left(\lambda_1x^2e^{-\lambda_1x}\right)dx + (1-p)\int_{0}^{\infty}\left(\lambda_2x^2e^{-\lambda_2x}\right)dx \\
+            &= \frac{2p}{\lambda_1^2} + \frac{2(1-p)}{\lambda_2^2}
+        \end{align*}
+        Luego, de lo anterior y de lo mencionado en el inciso $(ii)$ concluimos que
+        \begin{align*}
+            \text{Var}(X) &= \frac{2p}{\lambda_1^2} + \frac{2(1-p)}{\lambda_2^2} - \left(\frac{p}{\lambda_1} + \frac{1-p}{\lambda_2}\right)^2 \\
+            &= \frac{2p}{\lambda_1^2} + \frac{2(1-p)}{\lambda_2^2} - \left(\frac{p^2}{\lambda_1^2}+\frac{2p(1-p)}{\lambda_1\lambda_2}+\frac{(1-p)^2}{\lambda_2^2}\right) \\
+            &= \frac{2p-p^2}{\lambda_2} + \frac{2(1-p)-(1-p)^2}{\lambda_2} - \frac{2p(1-p)}{\lambda_1\lambda_2}.
+        \end{align*}
+        \hfill $\blacktriangle$
+\end{enumerate}
+
+\section*{Ejercicio 4.}
+Sea $X$ una variable aleatoria con distribución de Weibull con parámetros $\alpha = 2$ y $\beta > 0$. Demuestre que
+\[
+Y = \dfrac{2X^2}{\beta^2}
+\]
+tiene una distribución ji-cuadrado con $\nu = 2$ grados de libertad.\\
+\textbf{Demostración.} \\
+Tenemos que $X$ tiene función de densidad
+\[
+f(t)=
+\begin{cases}
+    \frac{2}{\beta}\left(\frac{x}{\beta}\right)e^{-\left(x/\beta\right)^2}, &x \geq 0 \\
+    0, &x<0
+\end{cases}
+\]
+Así, tomando $u=-(x/\beta)^2$,
+\begin{align*}
+    F_X(x) &= \int_{-\infty}^{x}f(t)dt \\
+    &= \int_{0}^{x}\frac{2}{\beta}\left(\frac{t}{\beta}\right)e^{-\left(t/\beta\right)^2}dt \\
+    &= -\int_{0}^{x}e^udu \\
+    &= -\left(e^u\right)\Big|_{t=0}^x \\
+    &= -\left(e^{-(x/\beta)^2}\right)\Big|_{t=0}^x \\
+    &= 1-e^{-(x/\beta)^2}.
+\end{align*}
+Notemos que
+\begin{align*}
+    F_Y(y) &= \P(Y\leq y) \\
+    &= \P\left(\frac{2X^2}{\beta^2}\leq y\right) \\
+    &= \P\left(X\leq \frac{\beta\sqrt{y}}{\sqrt{2}}\right) \\
+    &= F_X\left(\frac{\beta\sqrt{y}}{\sqrt{2}}\right) \\
+    &= 1-e^{\left(-\beta\sqrt{y}/(\beta\sqrt{2})\right)^2} \\
+    &= 1-e^{-y/2},
+\end{align*}
+que coincide justamente con la función de distribución de una variable aleatoria con distribución ji-cuadrado de parámetros $\nu=2$,
+de lo que se sigue el resultado. \hfill $\blacktriangle$
+
+\section*{Ejercicio 5.}
+Sean $X$ y $Y$ dos variables aleatorias con valores en el conjunto $\llaves{x_1, \dots, x_n}$, con funciones de probabilidad (masas de probabilidad) $f_X$ y $f_Y$, respectivamente. Demuestre que
+\[
+- \E ( \log f_Y (X)) \geq - \E ( \log f_X (X)),
+\]
+y que
+\[
+- \E( \log f_X (X)) \geq \log n.
+\]
+¿Cuándo se tienen las igualdades?\\
+La función
+\[
+H(X) := - \E (\log f_X (X))
+\]
+se llama \textit{entropía} de la variable aleatoria $X$. La primera desigualdad se cumple de manera mucho mas general: si $Y := g(X)$ para alguna función $g$, entonces $H(Y) \leq H(X)$.\\
+\textbf{\textit{Demostración.}}
+
+\end{document}

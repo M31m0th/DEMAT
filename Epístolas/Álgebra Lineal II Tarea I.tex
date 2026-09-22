@@ -1,0 +1,373 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy, fancy]{evan}
+\usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{red1}{RGB}{255, 153, 153}
+\definecolor{green1}{RGB}{204, 255, 204}
+\definecolor{blue1}{RGB}{204, 255, 255}
+\definecolor{yellow1}{RGB}{255, 247, 160}
+
+\definecolor{red2}{RGB}{255, 102, 102}
+\definecolor{green2}{RGB}{108, 255, 108}
+\definecolor{blue2}{RGB}{94, 204, 255}
+\definecolor{yellow2}{RGB}{255, 250, 104}
+
+\definecolor{red2.5}{RGB}{255,76,76}
+\definecolor{green2.5}{RGB}{54, 247, 54}
+\definecolor{blue2.5}{RGB}{51, 189, 255}
+\definecolor{yellow2.5}{RGB}{255, 242, 52}
+
+
+\definecolor{red3}{RGB}{255, 51, 51}
+\definecolor{green3}{RGB}{0, 240, 0}
+\definecolor{blue3}{RGB}{9, 175, 255}
+\definecolor{yellow3}{RGB}{255, 234, 0}
+
+\definecolor{red3.5}{RGB}{229, 25, 25}
+\definecolor{green3.5}{RGB}{0, 194, 0}
+\definecolor{blue3.5}{RGB}{4, 143, 209}
+\definecolor{yellow3.5}{RGB}{255,220,0}
+
+\definecolor{red4}{RGB}{204, 0, 0}
+\definecolor{green4}{RGB}{0, 149, 0}
+\definecolor{blue4}{RGB}{0, 111, 164}
+\definecolor{yellow4}{RGB}{255, 206, 0}
+
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath} %Para poner acentos
+
+\usepackage{amssymb} %Geogebra
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{chngcntr} %Descripciones de figuras
+\title{\texttt{Tarea 1
+\\ Álgebra Lineal II}}
+\author{Luis David Uicab Martínez. 
+\\Lic. en Matemáticas.}
+\date{19 de Septiembre del 2026}
+
+\begin{document}
+\maketitle
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 1, Tarea 01, Álgebra Lineal II}]
+    Dado que
+    \begin{equation*}
+        \begin{vmatrix}
+            -3a_{11} & -6a_{13} & -3a_{12} \\
+            a_{21} & 2a_{23} & a_{22} \\
+            5a_{31} & 10a_{33} & 5a_{32}
+        \end{vmatrix}=-15,
+    \end{equation*}
+    calcula
+    \begin{equation*}
+        \begin{vmatrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+        \end{vmatrix}.
+    \end{equation*}
+\end{mdframed}
+\textbf{Solución.} Por la $n-$linealidad y alternancia de la determinante, así como la propiedad det$(A)=$det$(A^t)$,
+obtenemos que
+
+\begin{alignat*}{2}
+    -15 &= \text{det}
+    \begin{pmatrix}
+        -3a_{11} & -6a_{13} & -3a_{12} \\
+        a_{21} & 2a_{23} & a_{22} \\
+        5a_{31} & 10a_{33} & 5a_{32}
+    \end{pmatrix}
+    = -3\cdot\text{det}
+    \begin{pmatrix}
+        a_{11} & 2a_{13} & a_{12} \\
+        a_{21} & 2a_{23} & a_{22} \\
+        5a_{31} & 10a_{33} & 5a_{32}
+    \end{pmatrix} \\
+    &=-15\cdot\text{det}
+    \begin{pmatrix}
+        a_{11} & 2a_{13} & a_{12} \\
+        a_{21} & 2a_{23} & a_{22} \\
+        a_{31} & 2a_{33} & a_{32}
+    \end{pmatrix}
+    =-15\cdot\text{det}
+    \left(\begin{pmatrix}
+        a_{11} & 2a_{13} & a_{12} \\
+        a_{21} & 2a_{23} & a_{22} \\
+        a_{31} & 2a_{33} & a_{32}
+    \end{pmatrix}^t\right) \\
+    &= -15\cdot\text{det}
+    \begin{pmatrix}
+        a_{11} & a_{21} & a_{31} \\
+        2a_{13} & 2a_{23} & 2a_{33} \\
+        a_{12} & a_{22} & a_{32}
+    \end{pmatrix}
+    = -30\cdot\text{det}
+    \begin{pmatrix}
+        a_{11} & a_{21} & a_{31} \\
+        a_{13} & a_{23} & a_{33} \\
+        a_{12} & a_{22} & a_{32}
+    \end{pmatrix} \\
+    &= 30\cdot \text{det}
+    \begin{pmatrix}
+        a_{11} & a_{21} & a_{31} \\
+        a_{12} & a_{22} & a_{32} \\
+        a_{13} & a_{23} & a_{33}
+    \end{pmatrix}
+    = 30\cdot \text{det}
+    \left(
+    \begin{pmatrix}
+        a_{11} & a_{21} & a_{31} \\
+        a_{12} & a_{22} & a_{32} \\
+        a_{13} & a_{23} & a_{33}
+    \end{pmatrix}^t
+    \right) \\
+    &=30\cdot \text{det}
+    \begin{pmatrix}
+        a_{11} & a_{12} & a_{12} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{pmatrix}.
+\end{alignat*}
+De lo anterior, concluimos que
+\begin{equation*}
+    \text{det}
+    \begin{pmatrix}
+        a_{11} & a_{12} & a_{12} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{pmatrix}
+    =-\frac{15}{30}
+    =\frac{1}{2}.
+\end{equation*}
+\hfill $\blacktriangle$
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 2, Tarea 01, Álgebra Lineal II}]
+    Una matriz  $A \in M_{n\times n}(K)$ se llama ortogonal si $A^{-1}=A^t$. Demuestra que para $A$
+    ortogonal, det$(A)=\pm 1$.
+\end{mdframed}
+\textbf{Demostración.} De las propiedades de la determinante, y de la hipótesis, se sigue que
+\begin{align*}
+    \text{A}^2 &= \text{det}\left(A\right)\text{det}\left(A\right) \\
+    &= \text{det}\left(A\right)\text{det}\left(A^t\right) \\
+    &= \text{det}\left(A\right)\text{det}\left(A^{-1}\right) \\
+    &= \text{det}\left(A\cdot A^{-1}\right) \\
+    &= \text{det}\left(I\right) \\
+    &= 1.
+\end{align*}
+En consecuencia, det$\left(A\right)=\pm 1$. \hfill $\blacksquare$
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 3, Tarea 01, Álgebra Lineal II}]
+    Sea $A \in M_{n\times n}(K)$ una matriz cuya suma de todos los elementos de cada columna es igual a cero.
+    Demuestra que det$(A)=0$.
+\end{mdframed}
+\textbf{Demostración.} Definimos $E_{2}^{c\cdot i + j}$ como la matriz elemental que suma a la fila $j$ $c$ veces la fila $i$.
+Por otra parte, sea
+\begin{equation*}
+    A=
+    \begin{pmatrix}
+        \alpha_1 \\
+        \vdots \\
+        \alpha_n
+    \end{pmatrix},
+\end{equation*}
+dónde $\alpha_i=(a_{i1}\dots a_{in})$ para toda $i=1,\dots,n$.
+De la hipótesis, tenemos que
+\begin{equation*}
+    \sum_{i=1}^{n}a_{ij}=0, \quad \forall j\in \{1,...,n\},
+\end{equation*}
+con lo que aseveramos
+\begin{align*}
+    \sum_{i=1}^{n}\alpha_i &= \left(\sum_{i=1}^{n}a_{i1}\dots \sum_{i=1}^{n}a_{in}\right) \\
+    &= \left(0\dots 0\right).
+\end{align*}
+En consecuencia
+\begin{align*}
+    A' &= E_{2}^{c\cdot n + j}\cdot E_{2}^{c\cdot (n-1) + j} \cdot ... \cdot E_{2}^{c\cdot 1 + j}\cdot A \\
+    &=
+    \begin{pmatrix}
+        0 \\
+        \alpha_2 \\
+        \vdots \\
+        \alpha_n
+    \end{pmatrix}.
+\end{align*}
+Observemos que
+\begin{align*}
+    \text{det}\left(E_{2}^{c\cdot n + j}\cdot E_{2}^{c\cdot (n-1) + j} \cdot ... \cdot E_{2}^{c\cdot 1 + j}\right)\text{det}\left(A\right) &= \text{det}\left(A'\right) \\
+    &=\text{det}
+    \begin{pmatrix}
+        0 \\
+        \alpha_2 \\
+        \vdots \\
+        \alpha_n
+    \end{pmatrix} \\
+    &=0.
+\end{align*}
+Finalmente, como las matrices elementales son invertibles, su producto también lo es, con lo que aseguramos que la determinante de $E_{2}^{c\cdot n + j}\cdot E_{2}^{c\cdot (n-1) + j} \cdot ... \cdot E_{2}^{c\cdot 1 + j}$
+es distinta de 0, y en adición, por la cadena de igualdades anterior, det$(A)=0$. \hfill $\blacktriangle$
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 4, Tarea 01, Álgebra Lineal II}]
+    Una matriz cuadrada $B\in M_{n\times n}(K)$ se llama antisimétrica si $B^t=-B$. Demuestra que si $B\in M_{n\times n}$
+    es antisimétrica y $n$ es impar, entonces det$(B)=0$.
+\end{mdframed}
+\textbf{Demostración.}
+De la hipótesis, y de la $n-$linealidad de la determinante tenemos que
+\begin{align*}
+    \text{det}(B) &= \text{det}(B^t) \\
+    &= \text{det}(-B) \\
+    &= (-1)^n\text{det}(B).
+\end{align*}
+Como $n$ es impar, $(-1)^n=-1$. De ello, y de las igualdades previamente mencionadas,
+\[
+\text{det}(B)=-\text{det}B,
+\]
+lo cuál es posible si y solo si det$(B)=0$, de lo que se sigue el resultado. \hfill $\blacksquare$
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 5, Tarea 01, Álgebra Lineal II}]
+    Encuentra la adjunta clásica de:
+    \[
+    A=
+    \begin{pmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22 }
+    \end{pmatrix} \quad
+    B=
+    \begin{pmatrix}
+        3 & 6 & 7 \\
+        0 & 4 & 8 \\
+        0 & 0 & 5
+    \end{pmatrix}
+    \]
+\end{mdframed}
+\textbf{Solución.} Por definición, la adj$(A)$ está definida como $(c_{ij})^t$ dónde $c_{ij}=(-1)^{i+j}\text{det}\left(A\left(i|j\right)\right)$.
+Así, tenemos que
+\begin{align*}
+    c_{11}=a_{22}, \quad c_{12}=-a_{21}, \quad c_{21}=-a_{12}, \quad c_{22}=a_{11},
+\end{align*}
+y en adición,
+\begin{equation*}
+    \text{adj}(A)=(c_{ij})^t=
+    \begin{pmatrix}
+        a_{22} & -a_{12} \\
+        -a_{21} & a_{11}
+    \end{pmatrix}.
+\end{equation*}
+Calculemos ahora la adjunta de $B$. Tenemos que
+\begin{align*}
+    c_{11}&=\text{det}\left(A\left(1|1\right)\right)=4\cdot 5 - 0\cdot 8=20 \\
+    c_{12}&=-\text{det}\left(A\left(1|2\right)\right)=-\left(0\cdot 5 - 0\cdot 8\right)=0 \\
+    c_{13}&=\text{det}\left(A\left(1|3\right)\right)=0\cdot 0 - 0\cdot 4=0 \\
+    c_{21}&=-\text{det}\left(A\left(2|1\right)\right)=-\left(6\cdot 5 - 0\cdot 7\right)=-30 \\
+    c_{22}&=\text{det}\left(A\left(2|2\right)\right)=3\cdot 5 - 0\cdot 7=15 \\
+    c_{23}&=-\text{det}\left(A\left(2|3\right)\right)=-\left(3\cdot 0 - 0\cdot 6\right)=0 \\
+    c_{31}&=\text{det}\left(A\left(3|1\right)\right)=6\cdot 8 - 4\cdot 7=20 \\
+    c_{32}&=-\text{det}\left(A\left(3|2\right)\right)=-\left(3\cdot 8 - 0\cdot 7\right)=-24 \\
+    c_{33}&=\text{det}\left(A\left(3|3\right)\right)=3\cdot 4 - 0\cdot 6=12,
+\end{align*}
+de lo que obtenemos
+\begin{equation*}
+    \text{adj}(B)=
+    \begin{pmatrix}
+        20 & 0 & 0 \\
+        -30 & 15 & 0 \\
+        20 & -24 & 12
+    \end{pmatrix}^t=
+    \begin{pmatrix}
+        20 & -30 & 20 \\
+        0 & 15 & -24 \\
+        0 & 0 & 12
+    \end{pmatrix}.
+\end{equation*}
+\hfill $\blacktriangle$
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 6, Tarea 01, Álgebra Lineal II}]
+    Demuestra que para cualquier $A\in M_{n\times n}(K)$, det$(\text{adj}(A))=\left[\text{det}(A)\right]^{n-1}$.
+\end{mdframed}
+Sabemos que para una matriz $A=(a_{ik})\in M_{n\times n}(F)$ arbitraria
+\begin{align*}
+    A\cdot \text{adj}(A) =
+    \begin{pmatrix}
+        \det(A)e_1 \\
+        \det(A)e_2 \\
+        \vdots \\
+        \det(A)e_n
+    \end{pmatrix}. \tag{1}
+\end{align*}
+Supongamos que $A$ no es invertible. Probaremos que en consecuencia, $\text{adj}(A)$ no es invertible. Procedamos por contradicción.
+Así, existe $A$ tal que $\text{adj}(A)^{-1}=(b_{jk})$ y en adición
+\begin{align*}
+    A =
+    \begin{pmatrix}
+        \det(A)e_1 \\
+        \det(A)e_2 \\
+        \vdots \\
+        \det(A)e_n
+    \end{pmatrix}
+    \cdot \text{adj}(A)^{-1}.
+\end{align*}
+Así,
+\begin{align*}
+    a_{ik}=\sum_{j=1}^{n}\det(A)\delta_{ij}b_{jk}.
+\end{align*}
+Luego, puesto que $A$ no es invertible, det$(A)=0$ y dada la definición previa, $a_{ik}=0$ para todo $i,j=0,...,n$. Es decir, $A=0_n$.
+De ello, se sigue que $\text{adj}(A)=\text{adj}(0_n)=0_n$. Dicha matriz no es invertible, lo cual es una contradicción, de lo que se sigue el resultado. \\
+Como dedujimos que $\text{adj}(A)$ no es invertible, afirmamos que
+\begin{align*}
+    \left[\text{det}(A)\right]^{n-1} &= (0)^{n-1} \\
+    &= 0 \\
+    &= \text{adj}(A).
+\end{align*}
+Supongamos ahora que $A$ es invertible. Por lo tanto, det$(A)\neq 0$. Luego, por la igualdad en $(1)$ y por la $n-$linealidad de la determinante se sigue que
+\begin{align*}
+    \text{det}\left(A\cdot \text{adj}(A)\right)=\text{det}
+    \begin{pmatrix}
+        \det(A)e_1 \\
+        \det(A)e_2 \\
+        \vdots \\
+        \det(A)e_n
+    \end{pmatrix} &\iff 
+    \text{det}\left(A\right)\text{det}\left(\text{adj}(A)\right)=\left[\text{det}(A)\right]^n\text{det}\left(I_n\right) \\
+    &\iff \text{det}\left(\text{adj}(A)\right)=\left[\text{det}\left(A\right)\right]^{n-1},
+\end{align*}
+con lo que finalizamos la demostración. \hfill $\blacksquare$
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 7, Tarea 01, Álgebra Lineal II}]
+    Demuestra que si $A\in M_{n\times n}(K)$ es triangular superior, adj$(A)$ también es triangular superior. Concluye de esta
+    forma que $A^{-1}$ es tirangular superior.
+\end{mdframed}
+\textbf{Demostración.} Sea $A=(a_{rs}) \in M_{n\times n}(K)$ triangular superior. Definamos adj$(A)=\left(b_{ij}\right)$. Queremos mostrar que,
+para $i>j$,
+\begin{align*}
+    b_{ij}=0 &\iff c_{ji}=0 \\
+    &\iff (-1)^{j+i}\text{det}\left(A\left(j|i\right)\right)=0 \\
+    &\iff \text{det}\left(A\left(j|i\right)\right)=0. \tag{1}
+\end{align*}
+Como $A$ es triangular superior, se cumple que $a_{rs}=0$ si $r>s$. Notemos que si $j=1$, eliminamos $a_{11}$ y puesto que $a_{r1}=0$ para $r>1$,
+se sigue que la columna $(1)$ de $A(i|j)$ es 0, y por lo tanto, det$\left(A\left(j|i\right)\right)=0$. Por otra parte, si $i=n$, eliminamos $a_{nn}$,
+y dado que $a_{ns}=0$ para $s<n$, obtenemos que la fila $(n)$ de $A\left(j|i\right)$ es 0, y nuevamente det$\left(A\left(i|j\right)\right)=0$. Así,
+nos importan los pares $j,i$ tales que $j\neq 1,i\neq n$. Puesto que $j<i$, al eliminar la columna $i$, las filas $(r)$ con $r\geq i$ sobreviven, y específicamente,
+los $a_{rr}$ con $r>i$ no son eliminados. \\ \\ 
+Tomemos $a_{nn}$. Si es igual a 0, el resultado es inmediato. Supongamos que $a_{nn}\neq 0$. Así, lo utilizamos de pivote,
+es decir, aplicamos a $A\left(j|i\right)$ las operaciones elementales $E_{2}^{-a_{rn}/a_{nn}\cdot 1 + r}$ para toda $r=1,...,n-1$, siendo el resultado igual a la matriz $A(j|i)$
+pero con los coeficientes de la columna $(n)$ igual a 0 excepto en $a_{nn}$. Repetimos este mismo proceso con $a_{n-1n-1}$, si es igual a $0$, obtenemos una fila $0$ y el resultado
+es inmediato. De ello, partimos de suponer que $a_{n-1,n-1}\neq 0$ y lo utilizamos de pivote. Reiteramos dicho algoritmo hasta ejecutarlo por último con $a_{i+1i+1}$. Luego,
+recordemos que la fila $i$ sigue perteneciendo a la matriz $A(j|i)$. Tras realizar las operaciones anteriores, afirmamos que todos
+los coeficientes de $a_{ir}$ con $r>i$ son iguales a 0. Recordando que $A$ es triangular, los coeficientes $a_{ir}$ con $i<r$ también son $0$. Por último, como la columna $i$ fue eliminada,
+el coeficiente $a_{ii}=0$ y en adición, ahora la fila es $0$. Luego, adj$(A)$ es igual a una matriz no invertible por el producto de matrices invertibles. En consecuencia, adj$(A)$ no es invertible y por lo tanto, det$\left(\text{adj}(A\left(j|i\right))\right)=0$. \\
+De lo anterior, y de lo dicho en $(1)$, se sigue que $\text{adj}(A)$ es triangular superior. Puesto que
+\begin{align*}
+    A^{-1} &=
+    \frac{\text{adj}(A)}{\text{det}(A)},
+\end{align*}
+es decir, multiplicar cada fila de adj$(A)$ por $1/\text{det}(A)$, concluimos que $A^{-1}$ también es una matriz triangular. \hfill $\blacksquare$
+\end{document}

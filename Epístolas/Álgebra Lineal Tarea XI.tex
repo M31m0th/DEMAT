@@ -1,0 +1,438 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy, fancy]{evan}
+\usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{red1}{RGB}{255, 153, 153}
+\definecolor{green1}{RGB}{204, 255, 204}
+\definecolor{blue1}{RGB}{204, 255, 255}
+\definecolor{yellow1}{RGB}{255, 247, 160}
+
+\definecolor{red2}{RGB}{255, 102, 102}
+\definecolor{green2}{RGB}{108, 255, 108}
+\definecolor{blue2}{RGB}{94, 204, 255}
+\definecolor{yellow2}{RGB}{255, 250, 104}
+
+\definecolor{red2.5}{RGB}{255,76,76}
+\definecolor{green2.5}{RGB}{54, 247, 54}
+\definecolor{blue2.5}{RGB}{51, 189, 255}
+\definecolor{yellow2.5}{RGB}{255, 242, 52}
+
+
+\definecolor{red3}{RGB}{255, 51, 51}
+\definecolor{green3}{RGB}{0, 240, 0}
+\definecolor{blue3}{RGB}{9, 175, 255}
+\definecolor{yellow3}{RGB}{255, 234, 0}
+
+\definecolor{red3.5}{RGB}{229, 25, 25}
+\definecolor{green3.5}{RGB}{0, 194, 0}
+\definecolor{blue3.5}{RGB}{4, 143, 209}
+\definecolor{yellow3.5}{RGB}{255,220,0}
+
+\definecolor{red4}{RGB}{204, 0, 0}
+\definecolor{green4}{RGB}{0, 149, 0}
+\definecolor{blue4}{RGB}{0, 111, 164}
+\definecolor{yellow4}{RGB}{255, 206, 0}
+
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath} %Para poner acentos
+
+\usepackage{amssymb} %Geogebra
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{chngcntr} %Descripciones de figuras
+\title{\texttt{Tarea 11
+\\ Álgebra Lineal I}}
+\author{Luis David Uicab Martínez. 
+\\Lic. en Matemáticas.}
+\date{05 de Mayo del 2026}
+
+\begin{document}
+\maketitle
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 1, Tarea 11, Álgebra Lineal I}]
+    (1 punto) Encuentra una base de $Im(T)$ y de $Nul(T)$, donde $T:\RR^3\rightarrow \RR^3$ está dada por:
+    \begin{equation*}
+        \begin{pmatrix}
+            -1 & 2 & 1 \\
+            0 & 1 & 1 \\
+            1 & 3 & 4
+        \end{pmatrix}.
+    \end{equation*}
+\end{mdframed}
+\textbf{Solución.} Sabemos que la transformación lineal $T$ está denotada por la matriz previamente mencionada a la
+cual llamaremos $A$. Así, $Nul(T)$ será el conjunto de los $v=(x_1,x_2,x_3) \in \RR^3$ tales que $Av=0$, es decir, el conjunto solución
+del sistema homogéneo asociado a $A$. Puesto que
+\begin{equation*}
+    \text{RFE}(A)=
+    \begin{pmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 1 \\
+        0 & 0 & 0
+    \end{pmatrix}
+\end{equation*}
+afirmamos que
+\begin{align*}
+    Nul(T) &= \{(x_1,x_2,x_3)\in \RR^3|x_1+x_3=0, x_2+x_3=0\} \\
+    &= \{(x_1,x_2,x_3)\in \RR^3|x_1=-x_3, x_2=-x_3\} \\
+    &= \{(-x_3,-x_3,x_3)|x_3 \in \RR\} \\
+    &= \{x_3(-1,-1,1)|x_3 \in \RR\}.
+\end{align*}
+En consecuencia, $\langle(-1,-1,1)\rangle = Nul(T)$. De ello, y puesto que $x_3(-1,-1,1)=0$ si y solo si $x_3=0$, se sigue que $\{(-1,1,1)\}$ es linealmente
+independiente y en adición, base de $Nul(T)$. Luego, por el teorema de rango-nulidad, se sigue que la dimensión de $Im(T)$ es 2. Tomemos nuevamente $(x_1,x_2,x_3) \in \RR$
+arbitrario. Notemos que
+\begin{align*}
+    T(x_1,x_2,x_3) &=
+    \begin{pmatrix}
+        -1 & 2 & 1 \\
+        0 & 1 & 1 \\
+        1 & 3 & 4        
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\        
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+        -x_1 + 2x_2 + x_3 \\
+        x_2 + x_3 \\
+        x_1 + 3x_2 + 4x_3
+    \end{pmatrix}
+\end{align*}
+con lo que aseveramos
+\begin{equation*}
+    T(1,0,0)=(-1,0,1), \quad T(0,0,1)=(1,1,4),
+\end{equation*}
+y en adición, $(-1,0,1),(1,1,4) \in Im(T)$. Por otra parte, hacemos ver que para $a_1,a_2 \in \RR$ arbitrario
+\begin{align*}
+    a_1(-1,0,1) + a_2(1,1,4) = (0,0,0) &\iff (-a_1+a_2,a_1+4a_2) = (0,0,0) \\
+    &\iff -a_1+a_2=0, a_2=0 a_1+4a_2=0 \\
+    &\iff a_1=0, a_2=0
+\end{align*}
+con lo que probamos, $\mathcal{B}=\{(-1,0,1),(1,1,4)\}$ es linealmente independiente. Puesto que $|\mathcal{B}|=2=\dim Im(T)$,
+concluimos que $\mathcal{B}$ es base de $Im(T)$. $\blacktriangle$
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 2, Tarea 11, Álgebra Lineal I}]
+    (1 punto) Sea $V_2$ el espacio vectorial sobre $F$, de polinomios de grado $\leq 2$ y considera la transformación lineal:
+    \begin{align*}
+        T:V_2 &\rightarrow F^3 \\
+        a_0+a_1x+a_2x^2 &\mapsto (a_0,a_1,a_2).
+    \end{align*}
+    Sean $\mathcal{B}_1 = \{1,x,x^2\}$ y $\mathcal{B}_2 = \{e_1,e_2,e_3\}$ bases ordenadas de $V_2$ y $F^3$. Encuentra $[T]_{\mathcal{B}_1,\mathcal{B}_2}$.
+\end{mdframed}
+\textbf{Solución.} Sabemos que la $i$-ésima columna de $[T]_{\mathcal{B}_1,\mathcal{B}_2}$ está denotada por las coordenadas de la imagen de $i$-ésimo
+vector en $\mathcal{B}_1$ respecto a $\mathcal{B}_2$. Por ello, señalamos que
+\begin{equation*}
+    T(1)=(1,0,0) \quad T(x)=(0,1,0) \quad T(0,0,1)=(0,0,1). \tag{1}
+\end{equation*}
+Luego, como $\mathcal{B}_2$ es la base canónica, para $(x_1,x_2,x_3) \in F^3$ arbitrario se tiene que $[(x_1,x_2,x_3)]_{\mathcal{B}_2}=(x_1,x_2,x_3)$. De ello,
+ y de (1), concluimos que
+\begin{equation*}
+    [T]_{\mathcal{B}_1,\mathcal{B}_2} =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}. \quad \blacktriangle
+\end{equation*}
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 3, Tarea 11, Álgebra Lineal I}]
+    (2 puntos) Sea $V = \left\{f:\RR \rightarrow \RR | f(x) = \sum_{i=0}^{3}a_ix^i, a_i \in \RR \right\}$. Considera la transformación lineal:
+    \begin{align*}
+        \mathcal{T}:V &\rightarrow V \\
+        f(x) &\mapsto xf'(x).
+    \end{align*}
+    Encuentra $[\mathcal{T}]_{\mathcal{B}_1}, [\mathcal{T}]_{\mathcal{B}_2}, [\mathcal{T}]_{\mathcal{B}_1,\mathcal{B}_2}$ y $[\mathcal{T}^2]_{\mathcal{B}_1,\mathcal{B}_2}$
+    donde $\mathcal{B}_1 = \{1,x,x^2,x^3\}$ y \\ $\mathcal{B}_2 = \{1,x+1,(x+1)^2,(x+1)^3\}$.
+\end{mdframed}
+\textbf{Solución.} Notemos que
+\begin{equation*}
+    \mathcal{T}(1) = 0 \quad
+    \mathcal{T}(x) = x \quad
+    \mathcal{T}\left(x^2\right) = 2x^2 \quad
+    \mathcal{T}\left(x^3\right) = 3x^3. \tag{1}
+\end{equation*}
+Así, tratándose $\mathcal{B}_1$ de la base canónica, tenemos que
+\begin{equation*}
+    \left[\sum_{i=0}^{3}a_ix^i\right]_{\mathcal{B}_1} =
+    (a_0,a_1,a_2,a_3)
+\end{equation*}
+de lo que se sigue
+\begin{equation*}
+    [T]_{\mathcal{B}_1} =
+    \begin{pmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 3
+    \end{pmatrix}.
+\end{equation*}
+Por otra parte,
+\begin{equation*}
+    \mathcal{T}\left(x+1\right) = x \quad
+    \mathcal{T}\left((x+1)^2\right) = 2x + 2x^2 \quad
+    \mathcal{T}\left((x+1)^3\right) = 3x+6x^2+3x^3 \tag{2}
+\end{equation*}
+recordando que la imagen de 1 es 0. Notemos que
+\begin{align*}
+    0 &= 0(1) + 0(x+1) + 0(x+1)^2 + 0(x+1)^3 \\
+    x &= -1(1) + 1(x+1) + 0(x+1)^2 + 0(x+1)^3 \\
+    2x+2x^2 &= 1(1) - 2(x+1) + 1(x+1)^2 + 0(x+1)^3 \\
+    3x + 6x^2 + 3x^3 &= 0(1) + 0(x+1) - 3(x+1)^2 + 3(x+1)^3
+\end{align*}
+En consecuencia,
+\begin{equation*}
+    [T]_{\mathcal{B}_2} =
+    \begin{pmatrix}
+        0 & -1 & 1 & 0 \\
+        0 & 1 & -2 & 0 \\
+        0 & 0 & 1 & -3 \\
+        0 & 0 & 0 & 3
+    \end{pmatrix}.
+\end{equation*}
+Ahora, recordemos que la columna $j$-ésima de la matriz
+$P$ tal que $P[v]_{\mathcal{B}_1}=[v]_{\mathcal{B}_2}, v \in V$, está dada por las coordenadas de $v_j \in \mathcal{B}_1$
+respecto a $\mathcal{B}_2$. Así, del hecho de que
+\begin{align*}
+    1 &= 1(1) + 0(x+1) + 0(x+1)^2 + 0(x+1)^3 \\
+    x &= -1(1) + 1(x+1) + 0(x+1)^2 + 0(x+1)^3 \\
+    x^2 &= 1(1) - 2(x+1) + 1(x+1)^2 + 0(x+1)^3 \\
+    x^3 &= -1(1) + 3(x+1) - 3(x+1)^2 + 1(x+1)^3
+\end{align*}
+afirmamos que
+\begin{equation*}
+    P=
+    \begin{pmatrix}
+        1 & -1 & 1 & -1 \\
+        0 & 1 & -2 & 3 \\
+        0 & 0 & 1 & -3 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}.
+\end{equation*}
+Así, de (1) y de lo anterior sabemos que
+\begin{align*}
+    [\mathcal{T}(1)]_{\mathcal{B}_2} &= P[\mathcal{T}(1)]_{\mathcal{B}_1}= P(0,0,0,0) = (0,0,0,0) \\
+    [\mathcal{T}\left(x\right)]_{\mathcal{B}_2} &= P[\mathcal{T}\left(x\right)]_{\mathcal{B}_1}= P(0,1,0,0) = (-1,1,0,0) \\
+    [\mathcal{T}\left(x^2\right)]_{\mathcal{B}_2} &= P[\mathcal{T}\left(x^2\right)]_{\mathcal{B}_1}= P(0,0,2,0) = (2,-4,2,0) \\
+    [\mathcal{T}\left(x^3\right)]_{\mathcal{B}_2} &= P[\mathcal{T}\left(x^3\right)]_{\mathcal{B}_1}= P(0,0,0,3) = (-3,9,-9,3)
+\end{align*}
+de lo que se colige
+\begin{equation*}
+    [T]_{\mathcal{B}_1,\mathcal{B}_2} =
+    \begin{pmatrix}
+        0 & -1 & 2 & -3 \\
+        0 & 1 & -4 & 9 \\
+        0 & 0 & 2 & -9 \\
+        0 & 0 & 0 & 3
+    \end{pmatrix}.
+\end{equation*}
+Señalamos ahora que
+\begin{align*}
+    \mathcal{T}^2(1) &= \mathcal{T}(0) = 0 \\
+    \mathcal{T}^2(x) &= \mathcal{T}(x) = x \\
+    \mathcal{T}^2(x^2) &= \mathcal{T}(2x^2) = 4x^2 \\
+    \mathcal{T}^2(x^3) &= \mathcal{T}(3x^3) = 9x^3.
+\end{align*}
+En consecuencia,
+\begin{align*}
+    [\mathcal{T}^2(1)]_{\mathcal{B}_2} &= P[\mathcal{T}^2(1)]_{\mathcal{B}_1}= P(0,0,0,0) = (0,0,0,0) \\
+    [\mathcal{T}^2\left(x\right)]_{\mathcal{B}_2} &= P[\mathcal{T}^2\left(x\right)]_{\mathcal{B}_1}= P(0,1,0,0) = (-1,1,0,0) \\
+    [\mathcal{T}^2\left(x^2\right)]_{\mathcal{B}_2} &= P[\mathcal{T}^2\left(x^2\right)]_{\mathcal{B}_1}= P(0,0,4,0) = (4,-8,4,0) \\
+    [\mathcal{T}^2\left(x^3\right)]_{\mathcal{B}_2} &= P[\mathcal{T}^2\left(x^3\right)]_{\mathcal{B}_1}= P(0,0,0,9) = (-9,27,-27,9)
+\end{align*}
+de lo que concluimos 
+\begin{align*}
+    [\mathcal{T}^2]_{\mathcal{B}_1,\mathcal{B}_2} =
+    \begin{pmatrix}
+        0 & -1 & 4 & -9 \\
+        0 & 1 & -8 & 27 \\
+        0 & 0 & 4 & -27 \\
+        0 & 0 & 0 & 9
+    \end{pmatrix}. \quad \blacktriangle
+\end{align*}
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 4, Tarea 11, Álgebra Lineal I}]
+    (2 puntos) Determina si, sobre $\RR$, las siguientes matrices son semejantes:
+    \begin{equation*}
+        A=
+        \begin{pmatrix}
+            4 & 1 & 0 \\
+            0 & 4 & 0 \\
+            0 & 0 & 2
+        \end{pmatrix},
+        \quad
+        B=
+        \begin{pmatrix}
+            4 & 0 & 0 \\
+            0 & 4 & 1 \\
+            0 & 0 & 2            
+        \end{pmatrix}.
+    \end{equation*}
+\end{mdframed}
+\textbf{Solución.} Supongamos que existe
+\begin{equation}
+    P=
+    \begin{pmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{pmatrix}
+\end{equation}
+tal que $A=PBP^{-1}$. En particular, $AP=PB$, y en adición, $AP-PB=0$. Así, tenemos que
+\begin{align*}
+    \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{pmatrix} &=
+    \begin{pmatrix}
+        4a_{11}+a_{21} & 4a_{12}+a_{22} & 4a_{13}+a_{23} \\
+        4a_{21} & 4a_{22} & 4a_{23} \\
+        2a_{31} & 2a_{32} & 2a_{33}
+    \end{pmatrix} -
+    \begin{pmatrix}
+        4a_{11} & 4a_{12} & a_{12}+2a_{13} \\
+        4a_{21} & 4a_{22} & a_{22}+2a_{23} \\
+        4a_{31} & 4a_{32} & a_{32}+2a_{33}
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+    a_{21} & a_{22} & -a_{12} + 2a_{13} + a_{23} \\
+    0 & 0 & 2a_{23} - a_{22} \\
+    -2a_{31} & -2a_{32} & -a_{32}
+\end{pmatrix}.
+\end{align*}
+De lo anterior inferimos que $a_{21}=a_{22}=0$  y $0=2a_{23}-a_{22}=2a_{23}$ de lo que se sigue
+dicha tercia de coeficientes es 0. Así, $P$ tiene una fila (la fila 2) 0, con lo que afirmamos, $P$ no
+es invertible, pero esto es una contradicción, pues habíamos supuesto que $P$ si lo era. En consecuencia,
+concluimos que $A$ y $B$ no son semejantes. $\blacktriangle$
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 5, Tarea 11, Álgebra Lineal I}]
+    (2 puntos) Sean $V$ y $W$, espacios vectoriales sobre un campo $F$, definimos el conjunto:
+    \begin{equation*}
+        \mathcal{L}(V,W) = \{\mathcal{T}:V\rightarrow W | T\text{ es lineal}\},
+    \end{equation*}
+    demuestra que, con las siguientes operaciones, $\mathcal{L}(V,W)$ tiene estructura de campo vectorial sobre $F$:
+    \begin{align*}
+        +:\mathcal{L}(V,W)\times \mathcal{L}(V,W) &\rightarrow \mathcal{L}(V,W) \\
+        (T_1,T_2) &\mapsto T_1+T_2 \\ \\
+        \cdot :F\times \mathcal{L}(V,W) &\rightarrow \mathcal{L}(V,W) \\
+        (a,T) &\mapsto aT
+    \end{align*}
+\end{mdframed}
+\textbf{Demostración.} Sean $T_1,T_2,T_3 \in \mathcal{L}\left(V,W\right)$, $v_1,v_2 \in V$ y $a,b \in F$ todos aribtrarios. Notemos que
+por linealidad de $T_1$ y $T_2$
+\begin{align*}
+    (T_1+T_2)(av_1+v_2) &= T_1(av_1+v_2) + T_2(av_1+v_2) \\
+    &= aT_1(v_1)+T_1(v_2) aT_2(v_1)+T_2(v_2) \\
+    &= a(T_1(v_1)+T_2(v_1)) + (T_1(v_2)+T_2(v_2)) \\
+    &= a(T_1+T_2)(v_1)+(T_1+T_2)(v_2),
+\end{align*}
+y además
+\begin{align*}
+    bT_1(av_1+v_2) &= b(T_1(av_1+v_2)) \\
+    &=b(aT_1(v_1)+T(v_2)) \\
+    &=a(T_1)(v_1)+(bT)(v_2),
+\end{align*}
+de lo que se colige, $T_1+T_2$ y $bT_1$ son lineales, y en consecuencia $\mathcal{L}(V,W)$ es cerrado bajo suma y producto escalar.
+Por otra parte, notemos que por asociatividad de $W$
+\begin{align*}
+    (T_1+T_2+T_3)(v_1) &= \sum_{i=1}^{n}T_i(v_1) \\
+    &= \left((T_1)(v_1)+(T_2)(v_1)\right) + T_3(v_1) \\
+    &= T_1(v_1)+\left((T_2+T_3)(v_1)\right)
+\end{align*}
+y
+\begin{align*}
+    (T_1+T_2+T_3)(v_1) &= \sum_{i=1}^{n}T_i(v_1) \\
+    &= T_1(v_1)+\left((T_2)(v_1)+(T_3)(v_1)\right)\\
+    &=T_1(v_1)+(T_2+T_3)(v_1)
+\end{align*}
+de lo que se sigue $(T_1+T_2)+T_3=T_1+(T_2+T_3)$ con lo que afirmamos, la suma es asociativa.
+Luego, por conmutatividad en $W$, se tiene que
+\begin{align*}
+    (T_1+T_2)(v_1)&=T_1(v_1)+T_2(v_1) \\
+    &=T_2(v_1)+T_1(v_1) \\
+    &=(T_2+T_1)(v_1),
+\end{align*}
+afirmando así que la suma de $\mathcal{L}(V,W)$ es conmutativa.
+Notemos que la función $T_0$ que mapea $v\in V$ al $0 \in W$ es lineal dada las propiedades del $0 \in W$.
+\begin{align*}
+    T_0(av_1+v_2) &= 0 \\
+    &= a(0) + 0 \\
+    &= aT_0(v_1)+T_0(v_2).
+\end{align*}
+Así, $T_0 \in \mathcal{L}(V,W)$. Luego, notemos que
+\begin{align*}
+    (T_1+T_0)(v_1)&=T_1(v_1)+T_0(v_1) \\
+    &=T_1(v_1) + 0 \\
+    &=T_1(v_1),
+\end{align*}
+con lo que afirmamos, existe nuetro aditivo.
+Definamos ahora $-T_1=-1\cdot T_1$ $-1 \in W$. Así, de la linealidad de $T$ y de la definición de inverso aditivo en $V$
+\begin{align*}
+    (T_1 + (-T_1))(v_1) &= T_1(v_1) + T_1(-v_1) \\
+    &= T_1(v_1-v_1) \\
+    &=T_1(0) \\
+    &=0,
+\end{align*} con lo que afirmamos, para todo $T \in \mathcal{L}(V,W)$ existe $-T$ tal que $T+(-T)=0$.
+Notemos que de la linealidad en $T$ y del producto escalar con 1 en $V$ $1\cdot T_1(v_1)=T_1(1\cdot v_1)=T_1(v_1)$.
+Nuevamente, de linealidad de $T$,
+\[
+(a_1a_2T)(v_1) = a_1a_2T_1(v_1) = a_1T_1(a_2v_1),
+\]
+afirmando la asociatividad del producto escalar. Luego, por distributividad en la suma de $W$
+\[
+a(T_1+T_2)(v_1)=a(T_1(v_1)+T_2(V_1))=aT_1(v_1)+aT_2(v_1)=(a_T_1+aT_2)(v_1).
+\]
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 6, Tarea 11, Álgebra Lineal I}]
+    (1 punto) Demuestra que todo elemento en $(F^n)^*$ es de la forma:
+    \begin{align*}
+        F^n &\rightarrow F \\
+        (x_1,...,x_n) &\mapsto \sum_{i=1}^{n}a_ix_i,
+    \end{align*}
+    donde $a_1,...,a_n \in F$.
+\end{mdframed}
+\textbf{Demostración.} Sea $T \in (F^n)^*$. Sea $(x_1,...,x_n) \in F^n$. Sea $\{e_1,...,e_n\}$ la base canónica de $F^n$.
+Definamos $a_i=T(e_i) \in F$. Así, por linealidad de $T$ se tiene que
+\begin{align*}
+    T(x_1,...,x_n) &= T\left(\sum_{i=1}^{n}x_ie_i\right) \\
+    &= \sum_{i=1}^{n}x_iT(e_i) \\
+    &= \sum_{i=1}^{n}a_ix_i,
+\end{align*}
+de lo que se sigue el resultado. $\blacktriangle$
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 7, Tarea 11, Álgebra Lineal I}]
+    (1 punto) Considera la base ordenada $\mathcal{B} = \{(1,0,-1),(1,1,1),(2,2,0)\}$ de $\RR^3$. Encuentra la base dual.
+\end{mdframed}
+\textbf{Solución.} Sean $c_1,c_2,c_3 \in \RR$ tales que
+\begin{align*}
+    (x_1,x_2,x_3)&=c_1(1,0,-1)+c_2(1,1,1)+c_3(2,2,0) \\
+    &=(c_1+c_2+2c_3,c_2+2c_3,-c_1+c_2),
+\end{align*}
+con lo que afirmamos
+\begin{align*}
+    c_1+c_2+2c_3=x_1, c_2+2c_3=x_2, -c_1+c_2=x_3 \iff& c_1=x_1-x_2, c_2+2c_3=x_2, -c_1+c_2=x_3 \\
+    \iff& c_1=x_1-x_2, c_2+2c_3=x_2, c_2=x_3+x_1-x_2 \\
+    \iff& c_1=x_1-x_2, c_3=\frac{2x_2-x_3-x_1}{2}, \\ 
+    &c_2=x_3+x_1-x_2.
+\end{align*}
+De ello se sigue que
+\begin{align*}
+    f_1(x_1,x_2,x_3) &= \sum_{j=1}^{3}c_jf_1(v_j) = \sum_{j=1}^{3}c_j\delta_{1j}=c_1=x_1-x_2 \\
+    f_2(x_1,x_2,x_3) &= \sum_{j=1}^{3}c_jf_2(v_j) = \sum_{j=1}^{3}c_j\delta_{2j}=c_2=x_1-x_2+x_3 \\
+    f_3(x_1,x_2,x_3) &= \sum_{j=1}^{3}c_jf_3(v_j) = \sum_{j=1}^{3}c_j\delta_{3j}=c_3=\frac{2x_2-x_3-x_1}{2},
+\end{align*}
+de lo que concluimos,
+\begin{align*}
+    \mathcal{B}^*=\left\{x_1-x_2,x_1-x_2+x_3,\frac{2x_2-x_3-x_1}{2}\right\}. \quad \blacktriangle
+\end{align*}
+\end{document}

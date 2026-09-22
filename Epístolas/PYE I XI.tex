@@ -1,0 +1,294 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy, fancy]{evan}
+\usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{red1}{RGB}{255, 153, 153}
+\definecolor{green1}{RGB}{204, 255, 204}
+\definecolor{blue1}{RGB}{204, 255, 255}
+\definecolor{yellow1}{RGB}{255, 247, 160}
+
+\definecolor{red2}{RGB}{255, 102, 102}
+\definecolor{green2}{RGB}{108, 255, 108}
+\definecolor{blue2}{RGB}{94, 204, 255}
+\definecolor{yellow2}{RGB}{255, 250, 104}
+
+\definecolor{red2.5}{RGB}{255,76,76}
+\definecolor{green2.5}{RGB}{54, 247, 54}
+\definecolor{blue2.5}{RGB}{51, 189, 255}
+\definecolor{yellow2.5}{RGB}{255, 242, 52}
+
+
+\definecolor{red3}{RGB}{255, 51, 51}
+\definecolor{green3}{RGB}{0, 240, 0}
+\definecolor{blue3}{RGB}{9, 175, 255}
+\definecolor{yellow3}{RGB}{255, 234, 0}
+
+\definecolor{red3.5}{RGB}{229, 25, 25}
+\definecolor{green3.5}{RGB}{0, 194, 0}
+\definecolor{blue3.5}{RGB}{4, 143, 209}
+\definecolor{yellow3.5}{RGB}{255,220,0}
+
+\definecolor{red4}{RGB}{204, 0, 0}
+\definecolor{green4}{RGB}{0, 149, 0}
+\definecolor{blue4}{RGB}{0, 111, 164}
+\definecolor{yellow4}{RGB}{255, 206, 0}
+
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath} %Para poner acentos
+
+\usepackage{amssymb} %Geogebra
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{chngcntr} %Descripciones de figuras
+\title{\texttt{Tarea 11
+\\ Probabilidad y Estadística I}}
+\author{Luis David Uicab Martínez. 
+\\Lic. en Matemáticas.}
+\date{05 de Junio del 2026}
+
+\begin{document}
+\maketitle
+\begin{center}
+    \text{Parte I. Valor esperado y varianza}
+\end{center}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 01, Tarea 11, Probabilidad y Estadística I}]
+    Sea $X$ una variable aleatoria discreta tal que $P(X=a)=p$ y $P(X=b)=1-p$  para algunos $a,b,p\in \RR$
+    con $a\leq b$ y $0 < p < 1$.
+    \begin{enumerate}
+        \item Encuentre una expresión para $\EE[X^n]$ para cada entero $n\geq 1$ y determine Var$(X)$.
+        \item Suponiendo que $a=-1$ y $b=1$, encuentre $c\neq 1$ tal que $\EE[c^X]=1$.
+    \end{enumerate}
+\end{mdframed}
+\textbf{Solución.} A priori, tenemos que $\{a,b\}$ es un soporte de $X$. Así, dado que $g=x^n$ es una función
+continua, se sigue que
+\begin{align*}
+    \EE[g\circ X] &= \EE[X^n] \\
+    &= g(a)(P=a)+g(b)(P=b) \\
+    &= a^np + b^n(1-p).
+\end{align*}
+En adición,
+\begin{align*}
+    \text{Var}(X^n) &= \EE[(X^n)^2] - \EE[X^n]^2 \\
+    &= \left(a^{2n}p + b^{2n}(1-p)\right) - \left(a^{n}p + b^{n}(1-p)\right)^2 \\
+    &= a^{2n}\left(p-p^2\right) + b^{2n}\left((1-p)-(1-p)^2\right) -2a^nb^np(1-p) \\
+    &= a^{2n}p(1-p) + b^{2n}p(1-p) -2a^nb^np(1-p) \\
+    &= (a^{2n}-2a^nb^n+b^{2n})p(1-p) \\
+    &= (a^n-b^n)^{2}p(1-p).
+\end{align*}
+Dado que $h(x)=c^x$ es continua, teniendo en cuenta que $a=-1$ y $b=1$, afirmamos que
+\begin{align*}
+    \EE[g\circ X] &= \EE[c^X] \\
+    &= h(a)(P=a)+h(b)(P=b) \\
+    &= c^{-1}p + c(1-p).
+\end{align*}
+Notemos que, partiendo de las condiciones anteriores, si $\EE[c^X]=1$
+\begin{align*}
+    c^{-1}p + c(1-p)=1 &\iff p + c^2(1-p) = c \\
+    &\iff (1-p)c^2 -c +p = 0 \\
+    &\iff c=\frac{-(-1)\pm\sqrt{(-1)^2-4(1-p)p}}{2(1-p)} \\
+    &\iff c=\frac{1\pm (2p-1)}{2(1-p)} \\
+    &\iff c=1 \text{ o } c=\frac{p}{1-p}.
+\end{align*}
+Luego, si $c\neq 1$, obtenemos que el único valor que puede tomar $c$ es $p/(1-p)$. $\blacktriangle$
+\newpage
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 02, Tarea 11, Probabilidad y Estadística I}]
+    Sea $X$ una variable aleatoria con valor esperado $\mu = \EE[X]$ y varianza $\sigma^2=$Var$(X)$.
+    \begin{enumerate}
+        \item Encuentre el valor esperado y varianza de $Y=(X-\mu)/\sigma^2$.
+        \item Sean $a,b \in \RR$. Encuentre el valor esperado y varianza de $Z=a+bY$.
+    \end{enumerate}
+\end{mdframed}
+\textbf{Solución.}
+
+
+\begin{center}
+    Parte II. Distribución exponencial
+\end{center}
+
+\noindent Recordemos que una variable aleatoria $X$ tiene \textbf{distribución exponencial} de parámetro $\lambda > 0$
+si tiene densidad
+\begin{equation*}
+    f(r)=
+    \begin{cases}
+        \lambda e^{-\lambda r}, & \text{si } r\geq 0, \\
+        0, & \text{en cualquier otro caso}.
+    \end{cases}
+\end{equation*}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 03, Tarea 11, Probabilidad y Estadística I}]
+    Sean $X$ una variable aleatoria exponencial de parámetro $\lambda > 0$. Demuestre que para todo entero $n \geq 1$
+    se cumple que
+    \begin{equation*}
+        \EE[X^n]=\frac{n}{\lambda}\EE[X^{n-1}].
+    \end{equation*}
+    Encuentre $\EE[X]$ y $\EE[X^2]$ y concluya que Var$(X)=\frac{1}{\lambda^2}$. \\
+    \textbf{Sugerencia.} Use integración por partes con $u=r^n$ y $dv=\lambda e^{-\lambda r}dr$.
+\end{mdframed}
+\textbf{Solución.}
+Sea $u=r^n$ y $dv=\lambda e^{-\lambda r}dr$. En consecuencia, $du=nr^{n-1}dr$ y $v=-e^{-\lambda r}$. De ello, y de la definición
+de esperanza de la integral de Stieltjes, decimos que
+\begin{align*}
+    \EE[X^n] &= \lim_{a\to \infty}\int_{-a}^{a}r^n\lambda e^{-\lambda r}dr \\
+    &= \lim_{a\to \infty}\int_{0}^{a}r^n\lambda e^{-\lambda r}dr \\
+    &= \lim_{a\to \infty}\left(\left(-r^ne^{-\lambda r}\right)\Big|_{r=0}^a-\int_{0}^{a}-nr^{n-1}e^{-\lambda r}dr\right) \\
+    &= \lim_{a\to \infty}\left(\left(-r^ne^{-\lambda r}\right)\Big|_{r=0}^a+\frac{n}{\lambda}\int_{0}^{a}r^{n-1}\lambda e^{-\lambda r}dr\right) \\
+    &= \lim_{a\to \infty}\left(\frac{n}{\lambda}\int_{0}^{a}r^{n-1}\lambda e^{-\lambda r}dr\right) \\
+    &= \frac{n}{\lambda}\lim_{a\to \infty}\left(\int_{0}^{a}r^{n-1}\lambda e^{-\lambda r}dr\right) \\
+    &= \frac{n}{\lambda}\EE[X^{n-1}].
+\end{align*}
+De lo anterior, afirmamos que que
+\begin{equation*}
+    \EE[X]=\frac{1}{\lambda}\EE[1]=\frac{1}{\lambda} \text{ y } \EE[X^2]=\frac{2}{\lambda}\EE[X]=\frac{2}{\lambda^2}.
+\end{equation*}
+Así, concluimos que
+\begin{align*}
+    \text{Var}(X) &= \EE[X^2]-\EE[X]^2 \\
+    &= \frac{2}{\lambda^2}-\left(\frac{1}{\lambda}\right)^2 \\
+    &= \frac{2}{\lambda^2}-\frac{1}{\lambda^2} \\
+    &= \frac{1}{\lambda^2}. \quad \blacktriangle
+\end{align*}
+\begin{center}
+    Parte III. Distribución gamma
+\end{center}
+
+La \textbf{función gamma} $\Gamma: \RR_{>0}\rightarrow \RR$ está dada por
+\begin{equation*}
+    \Gamma(\alpha) = \int_{0}^{\infty}e^{-r}r^{\alpha-1}dr \quad \text{ para todo } \quad \alpha > 0.
+\end{equation*}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 04, Tarea 11, Probabilidad y Estadística I}]
+    Demuestre usando integración por partes que $\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)$ para $\alpha > 1$. Encuentre
+    $\Gamma(1)$ y concluya que $\Gamma(n)=(n-1)!$.
+\end{mdframed}
+\textbf{Solución.} Sean $u=r^{\alpha-1}$ y $dv=e^{-r}dr$. En consecuencia (suponiendo $\alpha >1$), $du=(\alpha-1)r^{\alpha-2}dr$ y $v=-e^{-r}$.
+Así,
+\begin{align*}
+    \Gamma(\alpha) &= \int_{0}^{\infty}e^{-r}r^{\alpha-1}dr \\
+    &= -r^{\alpha-1}e^{-r}\Big|_{r=0}^\infty -\int_{0}^{\infty}-e^{-r}(\alpha-1)r^{\alpha-2}dr \\
+    &= (\alpha-1)\int_{0}^{\infty}e^{-r}r^{\alpha-2}dr \\
+    &= (\alpha-1)\Gamma(\alpha-1). \tag{1}
+\end{align*}
+Por otra parte, notemos que
+\begin{align*}
+    \Gamma(1) &= \int_{0}^{\infty}e^{-r}dr \\
+    &= \lim_{a \to \infty}\left(-e^{-r}\Big|_{r=0}^a\right) \\
+    &= \lim_{a \to \infty}\left(-e^{-a}+1\right) \\
+    &=1 \\
+    &=0!
+\end{align*}
+Probaremos que $\Gamma(n)=(n-1)!$ De las igualdades anteriores se sigue el caso base. Supongamos válido para algún $k$. Probaremos para $k+1$. De la
+igualdad en (1) y de la hipótesis inducción decimos que
+\begin{align*}
+    \Gamma(k+1) &= k\Gamma(k) \\
+    &= k(k-1)! \\
+    &= k!,
+\end{align*}
+con lo que concluimos, por el principio de inducción matemática, $\Gamma(n)=(n-1)!$ para todo $n \in \NN$. $\blacktriangle$
+\newpage
+
+\noindent Recordemos que una variable aleatoria $X$ tiene una \textbf{distribución gamma} de parámetros $(\lambda,\alpha)$ con $\lambda>0$
+y $\alpha>0$ si tiene densidad
+\begin{equation*}
+    f(r)=
+    \begin{cases}
+        \frac{\lambda e^{-\lambda r}(\lambda r)^{\alpha-1}}{\Gamma(\alpha)}, & \text{si } r\geq 0, \\%[0.5em]
+        0, & \text{en cualquier otro caso.}
+    \end{cases}
+\end{equation*}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 05, Tarea 11, Probabilidad y Estadística I}]
+    Sea $X$ una variable aleatoria gamma de parámetros $(\lambda,\alpha)$ con $\lambda>0$ y $\alpha>0$. Encuentre $\EE[X]$ y $\EE[X^2]$ y
+    concluya que Var$(X)=\alpha/\lambda^2$. \\
+    \textbf{Sugerencia.} Escriba $\lambda r^{n}e^{-\lambda r}(\lambda r)^{\alpha-1}$ como $\frac{1}{\lambda^n}\lambda e^{-\lambda r}(\lambda r)^{n+\alpha-1}$
+    y considere el cambio de variable $s=\lambda r$.
+\end{mdframed}
+\textbf{Solución.}
+Tenemos que
+\begin{align*}
+    \EE[X^n] &= \int_{-\infty}^{\infty}r^nf(r)dr \\
+    &= \int_{0}^{\infty}r^n\frac{\lambda e^{-\lambda r}(\lambda r)^{\alpha-1}}{\Gamma(\alpha)}dr \\
+    &=\int_{0}^{\infty}\frac{1}{\lambda^n}\cdot\frac{\lambda e^{-\lambda r}(\lambda r)^{n+\alpha-1}}{\Gamma(\alpha)}dr \\
+    &=\frac{1}{\lambda^n\Gamma(\alpha)}\int_{0}^{\infty}\lambda e^{-\lambda r}(\lambda r)^{n+\alpha-1}dr \tag{$\ast$}
+\end{align*}
+Luego, si tomamos $s=\lambda r$, tenemos que $ds=\lambda dr$ y en consecuencia, aplicando dicho cambio de variable, obtenemos que
+\begin{align*}
+    (\ast) &= \frac{1}{\lambda^n\Gamma(\alpha)}\int_{0}^{\infty}e^{-s}(s)^{n+\alpha-1}ds \\
+    &= \frac{1}{\lambda^n\Gamma(\alpha)}\Gamma(\alpha+n) \\
+    &= \frac{(\alpha+n-1)(\alpha+n-1)...(\alpha)\Gamma(\alpha)}{\lambda^n\Gamma(\alpha)} \\
+    &= \frac{(\alpha+n-1)(\alpha+n-1)...(\alpha)}{\lambda^n}.
+\end{align*}
+Así, de las igualdades anteriores, concluimos que
+\begin{align*}
+    \text{Var}(X) &= \EE[X^2]-\EE[X]^2 \\
+    &= \frac{(\alpha+1)\alpha}{\lambda^2} - \left(\frac{\alpha}{\lambda}\right)^2 \\
+    &= \frac{\alpha^2+\alpha}{\lambda^2} - \frac{\alpha^2}{\lambda^2} \\
+    &= \frac{\alpha}{\lambda^2}. \quad \blacktriangle
+\end{align*}
+\newpage
+
+\begin{center}
+    Parte IV. Distribución beta
+\end{center}
+
+\noindent Recordemos que una variable aleatoria $X$ tiene \textbf{distribución beta} de parámetros $(a,b)$ con $a>0$ y $b>0$ si tiene densidad
+\begin{equation*}
+    f(r)=
+    \begin{cases}
+        \frac{1}{C(a,b)}r^{a-1}(1-r)^{b-1}, & \text{si } 0<r<1, \\
+        0, & \text{en cualquier otro caso,}
+    \end{cases}
+\end{equation*}
+donde
+\begin{equation*}
+    C(a,b)=\int_{0}^{1}r^{a-1}(1-r)^{b-1}dr.
+\end{equation*}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 06, Tarea 11, Probabilidad y Estadística I}]
+    Sea $X$ una variable aleatoria beta de parámetros $(a,b)$ con $a>0$ y $b>0$. Demuestre que
+    \begin{equation*}
+        \EE[X]=\frac{a}{a+b} \quad \text{ y } \quad \text{Var}(X)=\frac{ab}{(a+b)^2(a+b+1)}.
+    \end{equation*}
+    \textbf{Sugerencia.} Use el hecho de que la función gamma satisface que $\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}=C(a,b)$.
+\end{mdframed}
+\textbf{Solución.} 
+
+\begin{center}
+    Parte V. Integral de Stieltjes
+\end{center}
+
+\noindent Sea $X$ una variable aleatoria y sea $F_X:\RR\rightarrow\RR$ su función de distribución. Recordemos que si una función $g:\RR\rightarrow\RR$
+es Stieltjes integrable con respecto a $F_X$ en el intervalo $[a,b]$ con $a\leq b$, entonces
+\begin{equation*}
+    \int_{a}^{b}g(r)dF_X(r) = \lim_{n\to \infty}\sum_{i=1}^{n}g(r_i)\left(F_X(r_i)-F_X(r_{i-1})\right)
+\end{equation*}
+donde para cada entero $n\geq 1$ tomamos
+\begin{equation*}
+    r_0=a, \quad r_1=a+\frac{b-a}{n}, \quad r_2=a+2\cdot\frac{b-a}{n},..., \quad r_{n-1}=a+(n-1)\cdot\frac{b-a}{n},\quad r_n=b.
+\end{equation*}
+Más aún, si
+\begin{equation*}
+    \int_{-\infty}^{\infty}g(r)dF_X(r) := \lim_{a\to +\infty}\int_{-a}^{+a}g(r)dF_X(r)
+\end{equation*}
+existe, lo llamamos el valor esperado de $g(X)$ y lo denotamos por $\EE[g(X)]$. En particular, el valor esperado de $X$ es
+\begin{equation*}
+    \EE[X]=\int_{-\infty}^{\infty}rdF_X(r) := \lim_{a\to +\infty}\int_{-a}^{+a}rdF_X(r).
+\end{equation*}
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 07, Tarea 11, Probabilidad y Estadística I}]
+    Sea $X:\Omega\rightarrow\RR$ una variable aleatoria no negativa, es decir $X(w)\geq 0$ para todo $w \in \Omega$. Supongamos que $X$ tiene valor
+    esperado $\EE[X]$. Demuestre que $\EE[X]\geq 0$. \\
+    \textbf{Sugerencia.} Demuestre que $F_X(r)=0$ si $r<0$, y por ende que
+    \begin{equation*}
+        \int_{-a}^{+a}rdF_X(r)=\int_{0}^{+a}rdF_X(r).   
+    \end{equation*}
+\end{mdframed}
+
+\end{document}

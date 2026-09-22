@@ -1,0 +1,161 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy, fancy]{evan}
+\usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{red1}{RGB}{255, 153, 153}
+\definecolor{green1}{RGB}{204, 255, 204}
+\definecolor{blue1}{RGB}{204, 255, 255}
+\definecolor{yellow1}{RGB}{255, 247, 160}
+
+\definecolor{red2}{RGB}{255, 102, 102}
+\definecolor{green2}{RGB}{108, 255, 108}
+\definecolor{blue2}{RGB}{94, 204, 255}
+\definecolor{yellow2}{RGB}{255, 250, 104}
+
+\definecolor{red2.5}{RGB}{255,76,76}
+\definecolor{green2.5}{RGB}{54, 247, 54}
+\definecolor{blue2.5}{RGB}{51, 189, 255}
+\definecolor{yellow2.5}{RGB}{255, 242, 52}
+
+
+\definecolor{red3}{RGB}{255, 51, 51}
+\definecolor{green3}{RGB}{0, 240, 0}
+\definecolor{blue3}{RGB}{9, 175, 255}
+\definecolor{yellow3}{RGB}{255, 234, 0}
+
+\definecolor{red3.5}{RGB}{229, 25, 25}
+\definecolor{green3.5}{RGB}{0, 194, 0}
+\definecolor{blue3.5}{RGB}{4, 143, 209}
+\definecolor{yellow3.5}{RGB}{255,220,0}
+
+\definecolor{red4}{RGB}{204, 0, 0}
+\definecolor{green4}{RGB}{0, 149, 0}
+\definecolor{blue4}{RGB}{0, 111, 164}
+\definecolor{yellow4}{RGB}{255, 206, 0}
+
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath} %Para poner acentos
+
+\usepackage{amssymb} %Geogebra
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{chngcntr} %Descripciones de figuras
+\title{\texttt{Tarea 01
+\\ Probabilidad}}
+\author{Luis David Uicab Martínez. 
+\\Lic. en Matemáticas.}
+\date{26 de Agosto del 2026}
+
+\begin{document}
+\maketitle
+\textbf{Instrucciones.} Justifique con claridad cada una de sus respuestas. Entregar los ejercicios marcados con *.
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 02 *, Tarea 01, Probabilidad}]
+    Demuestre que si $(A_n)$ es una colección de eventos en un mismo espacio de probabilidad, todos con probabilidad 1,
+    entonces $\mathbb{P}\left(\bigcap_{n=1}^\infty A_n\right)=1$.
+\end{mdframed}
+\textbf{Demostración.} Puesto que $\mathbb{P}(A_n)=1$, se sigue que $\mathbb{P}(A_n^c)=0$ $\forall n \in \NN$. Luego, dado que
+la función de probabilidad es no negativa
+\[
+ 0\leq \mathbb{P}\left(\bigcup_{n=1}^\infty A_n^c\right) \leq \sum_{n=1}^{\infty}\mathbb{P}(A_n^c)=0,
+\]
+se sigue que
+\[
+\mathbb{P}\left(\bigcup_{n=1}^\infty A_n^c\right)=0,
+\]
+y en consecuencia,
+\begin{align*}
+    \mathbb{P}\left(\bigcap_{n=1}^\infty A_n\right) &= 1 - \mathbb{P}\left(\left(\bigcap_{n=1}^\infty A_n\right)^c\right) \\
+    &= 1-\mathbb{P}\left(\bigcup_{n=1}^\infty A_n^c\right) \\
+    &= 1. \quad \blacksquare
+\end{align*}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 04 *, Tarea 01, Probabilidad}]
+    Sean $F(x)$ y $G(x)$ dos funciones de distribución. Determine si las siguientes funciones son de distribución:
+    \begin{enumerate}[(i)]
+        \item $aF(x)+(1-a)G(x)$, con $0\leq a \leq 1$.
+        \item $F(x)+G(x)$.
+        \item $F(x)G(x)$.
+        \item $\frac{2G(x)}{1+F(x)}$. 
+    \end{enumerate}
+\end{mdframed}
+
+\textbf{Solución.} A priori, dado que $F$ y $G$ son funciones de distribución, se sigue que
+    \begin{equation*}
+        \lim_{x\to -\infty}F(x)=\lim_{x\to -\infty}G(x)=0, \quad \lim_{x\to \infty}F(x)=\lim_{n\to \infty}G(x)=1. \tag{1}
+    \end{equation*}
+\begin{enumerate}[(i)]
+    \item En principio, por los límites de $(1)$, tenemos que
+    \[
+    \lim_{x\to -\infty}\left(aF(x)+(1-a)G(x)\right) = a\lim_{x\to -\infty}F(x) + (1-a)\lim_{x\to -\infty}G(x) = a(0) + (1-a)0 = 0
+    \]
+    y
+    \[
+    \lim_{x\to \infty}\left(aF(x)+(1-a)G(x)\right) = a\lim_{x\to \infty}F(x) + (1-a)\lim_{x\to \infty}G(x) = a(1) + (1-a)1 = 1.
+    \]
+    Luego, puesto que el producto de funciones continuas por un escalar y la suma de funciones continuas son ambas continuas, se sigue que
+    $aF(x)+(1-a)G(x)$ es continua (por la derecha). Finalmente, dado que $a,1-a$ son reales no negativos y $F$ y $G$ son monótona crecientes,
+    se sigue que $aF(x)$ y $(1-a)G(x)$ siguen siendo funciones monótonas crecientes, y en adición, su suma también lo es, con lo que concluimos,
+    $aF(x)+(1-a)G(x)$ es función de distribución.
+    \item De los límites mencionados en $(1)$, afirmamos que
+    \[
+    \lim_{x\to \infty}(F(x)+G(x)) = \lim_{x\to \infty}F(x) + \lim_{x\to \infty}G(x) = 2,
+    \]
+    de lo que sigue, dicha suma no puede ser función de distribución.
+    \item Por los límites mencionados en $(1)$, se sigue que
+    \[
+    \lim_{x\to -\infty}\left(F(x)G(x)\right) = \left(\lim_{x\to -\infty}F(x)\right)\left(\lim_{x\to -\infty}G(x)\right) = 0\cdot 0=0,
+    \]
+    y
+    \[
+    \lim_{x\to \infty}\left(F(x)G(x)\right) = \left(\lim_{x\to \infty}F(x)\right)\left(\lim_{x\to \infty}G(x)\right) = 1\cdot 1=1.
+    \]
+    Notemos que el porducto de funciones continuas es continuo, por lo que si por hipótesis, $F(x),G(x)$ lo son, entonces $F(x)G(x)$ lo es. Por último,
+    el producto de funciones monótona crecientes es monótono creciente, por lo que si nurvamente $F,G$ cumplen la propiedad antes dicha, $F(x)G(x)$ lo sigue cumpliendo,
+    con lo que concluimos, $F(x)G(x)$ es una función de distribución.
+    \item Sean $G$ y $F$ funciones de distrubición tales que para $x<y$, $x,y \in I$, se tiene que $F$ es constante y $G$ estrictamente creciente. Notemos que
+    \begin{align*}
+        \frac{2G(x)}{1+F(x)} \leq \frac{2G(y)}{1+F(y)} &\iff \frac{G(x)}{1+F(x)} \leq \frac{G(y)}{1+F(y)} \\
+        &\iff \frac{G(x)}{G(y)} \leq \frac{1+F(x)}{1+F(y)},
+    \end{align*}
+    Pero dada las condiciones que pedimos al estar $x,y \in I$, tenemos que
+    \[
+    1=\frac{G(x)}{G(y)} \leq \frac{1+F(x)}{1+F(y)} < 1,
+    \]
+    lo que es una contradicción, de lo que se sigue, la función de este inciso no es función de distribución. $\blacksquare$
+\end{enumerate}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 07 *, Tarea 01, Probabilidad}]
+    Suponga que $(X,Y)$ un vector aleatorio con función de probabilidades conjunta dada por
+    \[
+    f_{X,Y}(x,y)=
+    \begin{cases}
+        cx, &x,y \in \{1,2,\ldots,N^2\}, x\leq y^2, \\
+        0,  &\text{en cualquier otro caso,}
+    \end{cases}
+    \]
+    donde $N$ es un número natural y $c$ una constante positiva. Encuentre la función de probabilidades marginal de $X$ y de $Y$,
+    es decir, $f_X$ y $f_Y$.
+\end{mdframed}
+\textbf{Solución.} Sean $x,y \in \{1,...,N^2\}$ (si están fuera de ese dominio, $f_{X,Y}(x,y)=0$). Fijemos $x$. Tenemos entonces que para todo $y<\lceil\sqrt{x}\rceil$, $f_{X,Y}(x,y)=0$. Así,
+\begin{align*}
+    f_X(x) &= \sum_{y=1}^{N^2}f_{X,Y}(x,y) \\
+    &= \sum_{y=\lceil\sqrt{x}\rceil}^{N^2}cx \\
+    &= c\sum_{y=\lceil\sqrt{x}\rceil}^{N^2}x. 
+\end{align*}
+Sea ahora $y$ un número fijo. Si $x>y^2$, $f_{X,Y}(x,y)=0$. Así, afirmamos que
+\begin{align*}
+    f_Y(y) &= \sum_{x=1}^{N^2}f_{X,Y}(x,y) \\
+    &= \sum_{x=1}^{y^2}f_{X,Y}cx \\
+    &= c\sum_{x=1}^{y^2}f_{X,Y}x \\
+    &= \frac{c}{2}\cdot (y^4+y^2). \quad \blacksquare
+\end{align*}
+
+\end{document}

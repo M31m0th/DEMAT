@@ -1,0 +1,279 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy, fancy]{evan}
+\usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{red1}{RGB}{255, 153, 153}
+\definecolor{green1}{RGB}{204, 255, 204}
+\definecolor{blue1}{RGB}{204, 255, 255}
+\definecolor{yellow1}{RGB}{255, 247, 160}
+
+\definecolor{red2}{RGB}{255, 102, 102}
+\definecolor{green2}{RGB}{108, 255, 108}
+\definecolor{blue2}{RGB}{94, 204, 255}
+\definecolor{yellow2}{RGB}{255, 250, 104}
+
+\definecolor{red2.5}{RGB}{255,76,76}
+\definecolor{green2.5}{RGB}{54, 247, 54}
+\definecolor{blue2.5}{RGB}{51, 189, 255}
+\definecolor{yellow2.5}{RGB}{255, 242, 52}
+
+
+\definecolor{red3}{RGB}{255, 51, 51}
+\definecolor{green3}{RGB}{0, 240, 0}
+\definecolor{blue3}{RGB}{9, 175, 255}
+\definecolor{yellow3}{RGB}{255, 234, 0}
+
+\definecolor{red3.5}{RGB}{229, 25, 25}
+\definecolor{green3.5}{RGB}{0, 194, 0}
+\definecolor{blue3.5}{RGB}{4, 143, 209}
+\definecolor{yellow3.5}{RGB}{255,220,0}
+
+\definecolor{red4}{RGB}{204, 0, 0}
+\definecolor{green4}{RGB}{0, 149, 0}
+\definecolor{blue4}{RGB}{0, 111, 164}
+\definecolor{yellow4}{RGB}{255, 206, 0}
+
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath} %Para poner acentos
+
+\usepackage{amssymb} %Geogebra
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{chngcntr} %Descripciones de figuras
+\title{\texttt{Tarea 09
+\\ Álgebra Lineal I}}
+\author{Luis David Uicab Martínez. 
+\\Lic. en Matemáticas.}
+\date{20 de Abril del 2026}
+
+\begin{document}
+\maketitle
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 1, Tarea 09, Álgebra Lineal I}]
+    (2 puntos) Determina cuáles de las siguientes funciones $T$ de $\RR^2$ a $\RR^2$ son transformaciones lineales:
+    \begin{enumerate}[a)]
+        \item $T(x_1,x_2) = (1+x_1,x_2)$;
+        \item $T(x_1,x_2) = (x_2,x_1)$;
+        \item $T(x_1,x_2) = (x_1+2x_2,x_1-4x_2)$;
+        \item $T(x_1,x_2) = (\sin(x_1),\sin(x_2))$;
+    \end{enumerate}
+    justifica tus respuestas.
+\end{mdframed}
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item Notemos que
+    \begin{align*}
+        T(2,2) &= (3,2) \\
+        &\neq (4,2) \\
+        &= 2(2,1) \\
+        &= 2 \cdot T(1,1),
+    \end{align*}
+    con lo que afirmamos, $T$ no cumple que $T(av)=aT(v),a\in F, v \in \RR^2$, con lo que afirmamos, no es transformación lineal.
+    \item Tomemos $(x_1,x_2),(y_1,y_2) \in \RR^2, a\in F$ arbitrarios. Hacemos ver que
+    \begin{align*}
+        T(a(x_1,x_2)+(y_1,y_2)) &= T(ax_1+y_1,ax_2+y_2) \\
+        &= (ax_2+y_2,ax_1+y_1) \\
+        &= (ax_2,ax_1) + (y_2,y_1) \\
+        &= a(x_2,x_1) + (y_2,y_1) \\
+        &= aT(x_1,x_2) + T(y_1,y_2),
+    \end{align*}
+    con lo que afirmamos, $T$ cumple la definición de transformación lineal.
+    \item Véamos la siguiente cadena de igualdades
+    \begin{align*}
+        T(a(x_1,x_2)+(y_1,y_2)) &= T(ax_1+y_1,ax_2+y_2) \\
+        &= ((ax_1+y_1) + 2(ax_2+y_2), (ax_1+y_1) - 4(ax_2+y_2)) \\
+        &= ((ax_1+2ax_2) + (y_1+ 2y_2), (ax_1-4ax_2) + (y_1-4y_2)) \\
+        &= (ax_1+2ax_2,ax_1-4ax_2) + (y_1+2y_2,y_1-4y_2) \\
+        &= a(x_1+2x_2,x_1-4x_2) + (y_1+2y_2,y_1-4y_2) \\
+        &= aT(x_1,x_2)+T(y_1,y_2),
+    \end{align*}
+    de lo que se sigue, $T$ es transformación lineal.
+    \item Tomando el vector $(\pi,\pi)$ se tiene que
+    \begin{align*}
+        T(\pi,\pi) &= (\sin(\pi),\sin(\pi)) \\
+        &= (0,0) \\
+        &\neq \pi(\sin(1),\sin(1)) \\
+        &= \pi\cdot T(1,1),
+    \end{align*}
+    con lo que concluimos, $T$ no es lineal. $\blacktriangle$
+\end{enumerate}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 2, Tarea 09, Álgebra Lineal I}]
+    (1 punto) ¿Existe alguna transformación lineal de $\RR^3$ en $\RR^2$ tal que $T(2,2,2)=(2,0)$ y $T(1,1,1)=(0,1)$?
+    (Justifica tu respuesta).
+\end{mdframed}
+\textbf{Demostración.} Supongamos que existe $T$ lineal tal que cumpla con las hipótesis. En consecuencia, $T(2,2,2)=2\cdot T(1,1,1)$. Así,
+\begin{align*}
+    (2,0) &= T(2,2,2) \\
+    &= 2\cdot T(1,1,1) \\
+    &= 2(0,1) \\
+    &= (0,2),
+\end{align*}
+pero lo anterior es una contradicción puesto que $(2,0) \neq (0,2)$, de lo que afirmamos, tal $T$ no existe. $\blacksquare$
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 3, Tarea 09, Álgebra Lineal I}]
+    Sea $T:\RR^3\rightarrow \RR^3$ tal que $T(1,0,0)=(0,0,1),$ $T(1,1,0)=(1,1,1)$ y $T(1,1,1)=(1,1,0)$.
+    \begin{enumerate}[a)]
+        \item (1 punto) Encuentra $T(x_1,x_2,x_3)$.
+        \item (1 punto) Encuentra el espacio nulo, imagen, nulidad y rango $T$.
+    \end{enumerate}
+\end{mdframed}
+\textbf{Demostración.}
+\begin{enumerate}[a)]
+    \item En principio, mostraremos que $\mathcal{B}=\{(1,0,0),(1,1,0),(1,1,1)\}$ es una base de $\RR^3$. Tomando $a_1,a_2,a_3 \in \RR$,
+    tenemos que
+    \begin{align*}
+        a_1(1,0,0)+a_2(1,1,0)+a_3(1,1,1) = (0,0,0) &\iff (a_1+a_2+a_3,a_2+a_3,a_3) = (0,0,0) \\
+        &\iff a_1+a_2+a_3=0, a_2+a_3=0, a_3=0 \\
+        &\iff a_1+a_2=0, a_2=a_3=0 \\
+        &\iff a_1=a_2=a_3=0,
+    \end{align*}
+    con lo que afirmamos, $\mathcal{B}$ es linealmente independiente, y dado que es de cardinalidad 3, general $\RR^3$. En consecuencia, dado
+    $(x_1,x_2,x_3) \in \RR^3$, existen $a_1,a_2,a_3$ (nuevamente en $\RR$), tales que
+    \begin{align*}
+        a_1(1,0,0)+a_2(1,1,0)+a_3(1,1,1)=(x_1,x_2,x_3) &\iff (a_1+a_2+a_3,a_2+a_3,a_3)=(x_1,x_2,x_3) \\
+        &\iff a_1+a_2+a_3=x_1, a_2+a_3=x_2, a_3=x_3 \\
+        &\iff a_1=x_1-x_3-a_2, a_2=x_2-x_3, a_3=x_3 \\
+        &\iff a_1=x_1-x_2, a_2=x_2-x_3, a_3=x_3.
+    \end{align*}
+    Luego, de la igualdad anterior, y dada la linealidad de $T$, decimos que
+    \begin{align*}
+        T(x_1,x_2,x_3) &= T((x_1-x_2)(1,0,0)+(x_2-x_3)(1,1,0)+x_3(1,1,1)) \\
+        &= (x_1-x_2)T(1,0,0)+(x_2-x_3)T(1,1,0)+x_3T(1,1,1) \\
+        &= (x_1-x_2)(0,0,1)+(x_2-x_3)(1,1,1)+x_3(1,1,0) \\
+        &= (0,0,x_1-x_2) + (x_2-x_3,x_2-x_3,x_2-x_3)+(x_3,x_3,0) \\
+        &= (x_2,x_2,x_1-x_3), \tag{1}
+    \end{align*}
+    obteniendo así la imagen de $(x_1,x_2,x_3)$.
+    \item Buscaremos primero, el espacio nulo, es decir al conjunto 
+    \[
+    \text{Nul}=\{(x_1,x_2,x_3)\in \RR^3|T(x_1,x_2,x_3)=(0,0,0)\}.
+    \]
+    Para ello, hacemos ver que de (1) se sigue que
+    \begin{align*}
+        T(x_1,x_2,x_3)=(0,0,0) &\iff (x_2,x_2,x_1-x_3)=(0,0,0) \\
+        &\iff x_2=0 \quad x_1-x_3=0 \\
+        &\iff x_2=0 \quad x_1=x_3.
+    \end{align*}
+    Así, decimos que
+    \begin{align*}
+        \text{Nul} &= \{(x_1,0,x_1)|x_1 \in \RR\} \\
+        &= \{x_1(1,0,1)|x_1 \in \RR\}.
+    \end{align*}
+    Como $(x_1,0,x_1)=0$ si solo si $x_1=0$, se sigue que $\{(1,0,1)\}$ es indepediente, y dado que genera $\text{Nul}(T)$,
+    es base dicho conjunto. Así, $\text{nul}(T)=|\{(x_1,0,x_1)\}|=1$. Por otra parte, buscamos $\text{Im}(T)$. Por definición decimos que
+    \begin{align*}
+        \text{Im}(T) &= \{T(x_1,x_2,x_3)\in \RR^3 | (x_1,x_2,x_3) \in \RR^3\} \\
+        &= \{(x_2,x_2,x_1-x_3)|x_1,x_2,x_3 \in \RR\} \\
+        &= \{x_2(1,1,0)+(x_1-x_3)(0,0,1)|x_1,x_2,x_3 \in \RR\} \\
+        &= \{t_1(1,1,0)+t_2(0,0,1)|t_1,t_2 \in \RR\}.
+    \end{align*}
+    Finalmente, por el teorema de rango-nulidad, puesto que como ya mencionamos, $\dim(\RR^3)=3$, decimos que $\text{rg}(T)=3-\text{nul}(T)=2.$ $\blacksquare$
+\end{enumerate}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 4, Tarea 09, Álgebra Lineal I}]
+    (1 punto) Sean $V_1,V_2,V_3$ espacios vectoriales sobre $F$. Sean $T_1:V_1\rightarrow V_2$ y $T_2:V_2\rightarrow V_3$,
+    transformaciones lineales. Demuestra que $T_2\circ T_1:V_1 \rightarrow V_3$ es una transformación lineal.
+\end{mdframed}
+Sea $a \in F$ y $(x_1,x_2),(y_1,y_2) \in V_1$. Puesto que $T_1$ es lineal, tenemos que
+\begin{align*}
+    T_2 \circ T_1 (a(x_1,x_2)+(y_1,y_2)) &= T_2(T_1(a(x_1,x_2)+(y_1,y_2))) \\
+    &= T_2(a\cdot T_1(x_1,x_2)+T_1(y_1,y_2)). \tag{1}
+\end{align*}
+Como $T_2$ es una transformación lineal de $V_2$ a $V_3$ ($V_3$ espacio vectorial sobre $F$), y $a\cdot T_1(x_1,x_2),T_1(y_1,y_2) \in V_2$,
+se tiene que
+\begin{align*}
+    T_2(a\cdot T_1(x_1,x_2)+T_1(y_1,y_2)) &= a\cdot T_2(T_1(x_1,x_2))+T_2(T_1(y_1,y_2)) \\
+    &= a\cdot (T_2 \circ T_1)(x_1,x_2) + (T_2 \circ T_1)(y_1,y_2),
+\end{align*}
+con lo que añadiendo lo dicho en (1), se sigue el resultado. $\blacksquare$
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 5, Tarea 09, Álgebra Lineal I}]
+    (2 puntos) Sea $V$ un espacio vectorial de dimensión finita $n$ sobre $F$ y sea $T:V\rightarrow V$ una transformación lineal
+    tal que $\text{Im}(T)=\text{Nul}(T)$. Demuestra que $n$ es par y construye un ejemplo de una transformación lineal con esta propiedad.
+\end{mdframed}
+\textbf{Demostración.} Sabemos que $\text{Im}(T)\subseteq V$. Así, existe $\mathcal{B}\subseteq V$ tal que $\mathcal{B}$ es base de $\text{Im}(T)$.
+Denominemos $k=|\mathcal{B}|$, con $k \leq n$, dado que la dimensión de $V$ es $n$. Puesto que $\langle\mathcal{B}\rangle=\text{Im}(T)=\text{Nul}(T)$,
+afirmamos que $\text{rg}(T)=\text{nul}(T)=k$. Luego, por el teorema de rango-nulidad se sigue que
+\begin{align*}
+    n &= \text{rg}(T) + \text{nul}(T) \\
+    &= 2k,
+\end{align*}
+de lo que afirmamos, $n$ es par. Tomemos $T:\RR^2\rightarrow \RR^2$ tal que, $T(x_1,x_2)=(0,x_2)$. Probaremos primero que $T$ es lineal. Sean $(x_1,x_2),(y_1,y_2) \in \RR^2$,
+y $a \in \RR$. Hacemos ver que
+\begin{align*}
+    T(a(x_1,x_2)+(y_1,y_2)) &= T(ax_1+y_1,ax_2+y_2) \\
+    &= (0,ax_2+y_2) \\
+    &= a(0,x_2)+(0,y_2) \\
+    &=a\cdot T(x_1,x_2) + T(y_1,y_2),
+\end{align*}
+con lo que afirmamos, $T$ es lineal. Por otra parte, tenemos que
+\[
+\text{Nul}(T)=\{(x_1,x_2)\in \RR^2 | T(x_1,x_2)=0\}.
+\]
+Hacemos ver que
+\begin{align*}
+    T(x_1,x_2)=(0,0) &\iff (0,x_2)=(0,0) \\
+    &\iff x_2=0.
+\end{align*}
+En consecuencia, $\text{Nul}(T)=\{x_1(1,0)|x_1 \in \RR\}$. Así, $\langle(1,0)\rangle=\text{Nul}(T)$. Puesto que $(x_1,0)=(0,0)$ si y solo si $x_1=0$, se tiene que
+$\{(1,0)\}$ es linealmente independiente y en consecuencia, es base de $\text{Nul}(T)$. Luego, $1=|\{(1,0)\}|=\text{nul}(T)$. Finalmente, por el teorema de rango-nulidad,
+dado que $\RR^2$ es de dimensión 2, se concluye que $\text{rg}(T)=2-\text{nul}(T)=1$, obteniendo así el ejemplo buscado. $\blacksquare$
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 6, Tarea 09, Álgebra Lineal I}]
+    (2 puntos) Sea $V$ un espacio vectorial de dimensión $n$ sobre el campo $F$ y sea $\mathcal{B}=\{v_1,...,v_n\}$ una base ordenada
+    de $V$. Definimos la transformación lineal $T:V\rightarrow V$ mediante $T(v_j)=v_{j+1}$ para $j=1,..,n-1$ y $T(v_n)=0$. Demuestra
+    que $T^n=0$ y $T^{n-1}\neq 0$.
+\end{mdframed}
+\textbf{Demostración.} Probaremos a priori que la composición $n-$ésima de transformaciones lineales (siempre y cuando estén bien definidas) es una transformación lineal.
+Procederemos por inducción. Por el ejercicio 4 de esta tarea, sabemos que $T^2=T\circ T$ es lineal. Supongamos válido para algún $k$. Probaremos para $k+1$. Notemos pues que del ejercicio
+previamente mencionado $T^{k+1}=T\circ T^{k}$ es lineal, dado que es la composición de dos transformaciones lineales. Así, por el principio de inducción matemática, el resultado se
+cumple para toda $n \in \NN$. \\
+Por otra parte, probaremos que $T^z(v_j)=v_{j+z}$ para $j=1,...,n-1$ y $j+z \leq n$.  Procederemos por inducción. Notemos que
+\[
+T^2(v_j)=T(T(v_j))=T(v_{j+1})=v_{j+2},
+\]
+probando así el resultado para $z=2$. Supongamos válido para $k$. Probaremos para $k+1$. Por hipótesis de inducción y de la definición de $T$ se tiene que
+\begin{align*}
+    T^{k+1}(v_j) &= T\circ T^k(v_j) \\
+    &= T(T^k(v_j)) \\
+    &= T(v_{j+k}) \\
+    &= v_{j+(k+1)}, \tag{1}
+\end{align*}
+con lo que, por el principio de inducción matemática, el resultado se cumple para todo $z \in \NN$ (siempre que cumpla $j+z \leq n$).
+para todo $v_j \in \mathcal{B}$, existe $z\in \NN$ tal que $T^z(v_j)=0$. Si $j=n$, basta tomar $z=1$, dada la definición de $T$. Si $j<n$,
+dada la propiedad $T^z(v_j)=v_{j+z}$, vasta tomar $z=n+1-j$, puesto que
+\begin{align*}
+    T(T^{n-j}(v_j)) &= T(v_n) \\
+    &= 0,
+\end{align*}
+obteniendo así el resultado. Puesto que $T^z$ es lineal, afirmamos que $T^z(0)=0$. En consecuencia, notemos que, dado $v_j$ como antes,
+\begin{align*}
+    T^n(v_j) &= T^{j-1}(T^{n+1-j}(v_j)) \\
+        &= T^{j-1}(0) \\
+        &= 0,
+\end{align*}
+Con lo que afirmamos, para todo $v_j \in \mathcal{B}$, se tiene que $T^n(v_j)=0$. Luego, dado $v \in V$ arbitrario, puesto que $\mathcal{B}$ es base de $V$, existen escalares
+$a_1,...,a_n \in F$ tales que
+\[
+v=\sum_{i=1}^{n}a_iv_i.
+\]
+Así,
+\begin{align*}
+    T^n\left(v\right) &= T^n\left(\sum_{i=1}^{n}a_iv_i\right) \\
+    &= \sum_{i=1}^{n}a_iT(v_i) \\
+    &= \sum_{i=1}^{n}a_i(0) \\
+    &= 0,
+\end{align*}
+de lo que se colige, $T^n=0$. Por otra parte, apelando nuevamente a la propiedad mostrada en (1), decimos que
+\[
+T^{n-1}(v_1) = v_{n-1+(1)}=v_n,
+\]
+y dado que, como $v_n$ es parte de una base es forzosamente, distinto de 0, decimos que $T^{n-1}\neq 0$, con lo que damos por finalizada la demostración. $\blacksquare$
+\end{document}

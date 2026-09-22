@@ -1,0 +1,346 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy, fancy]{evan}
+\usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{red1}{RGB}{255, 153, 153}
+\definecolor{green1}{RGB}{204, 255, 204}
+\definecolor{blue1}{RGB}{204, 255, 255}
+\definecolor{yellow1}{RGB}{255, 247, 160}
+
+\definecolor{red2}{RGB}{255, 102, 102}
+\definecolor{green2}{RGB}{108, 255, 108}
+\definecolor{blue2}{RGB}{94, 204, 255}
+\definecolor{yellow2}{RGB}{255, 250, 104}
+
+\definecolor{red2.5}{RGB}{255,76,76}
+\definecolor{green2.5}{RGB}{54, 247, 54}
+\definecolor{blue2.5}{RGB}{51, 189, 255}
+\definecolor{yellow2.5}{RGB}{255, 242, 52}
+
+
+\definecolor{red3}{RGB}{255, 51, 51}
+\definecolor{green3}{RGB}{0, 240, 0}
+\definecolor{blue3}{RGB}{9, 175, 255}
+\definecolor{yellow3}{RGB}{255, 234, 0}
+
+\definecolor{red3.5}{RGB}{229, 25, 25}
+\definecolor{green3.5}{RGB}{0, 194, 0}
+\definecolor{blue3.5}{RGB}{4, 143, 209}
+\definecolor{yellow3.5}{RGB}{255,220,0}
+
+\definecolor{red4}{RGB}{204, 0, 0}
+\definecolor{green4}{RGB}{0, 149, 0}
+\definecolor{blue4}{RGB}{0, 111, 164}
+\definecolor{yellow4}{RGB}{255, 206, 0}
+
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amsmath} %Para poner acentos
+
+\usepackage{amssymb} %Geogebra
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{chngcntr} %Descripciones de figuras
+\title{\texttt{Tarea 04
+\\ Álgebra Lineal I}}
+\author{Luis David Uicab Martínez. 
+\\Lic. en Matemáticas.}
+\date{2 de Marzo del 2026}
+
+\begin{document}
+\maketitle
+Sea $F$ el campo $\mathbb{Q},\mathbb{R}$ o $\mathbb{C}$.
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 1, Tarea 05, Álgebra Lineal I}]
+    Sea $V$ un espacio vectorial sobre $F$. Demuestra que
+    \begin{enumerate}[a)]
+        \item (1 punto) El vector cero $0\in V$ es único.
+        \item (1 punto) Para todos $v_1,v_2\in V$, existe un único $v_3\in V$ tal que $v_1+v_3=v_2$.
+        \item (1 punto) Para toda $v \in V$, se tiene que $(-1)v=-v$ y $0v=0$.  
+    \end{enumerate}
+\end{mdframed}
+    \textit{\textbf{Prueba.}}
+    \begin{enumerate}[a)]
+        \item Sea $0\in V$. Sabemos que para todo $v\in V$, cumple que $v+0=v$. Ahora, supongamos que existe $0'\in V$ 
+        tal que para todo $v\in V$ también se cumpla que $v+0'=v$. De lo anterior, y de la conmutatividad de la suma en $V$, se tiene que
+        \begin{align*}
+            0&=0+0' \\
+            &=0'+0 \\
+            &=0',
+       \end{align*}
+       de lo que se sigue el resultado.
+       \item Tomemos $v_1,v_2\in V$. De ello, se sigue que $-v_1\in V$, y definamos $v_3=v_2+(-v_1)$ (dónde, dado que $V$ es cerrado bajo suma, también se cumple que $V_3 \in V$).
+       Tenemos entonces que
+       \begin{align*}
+            v_1+v_3&=v_1+(v_2-v_1) \\
+            &=(v_1-v_1)+v_2 \\
+            &=v_2.
+       \end{align*}
+       Probaremos ahora la unicidad de $v_3$. Supongamos que existe $v_3' \in V$ con las mismas propiedades, es decir $v_1+v_3'=v_2$. De ello se sigue que
+       \[
+       v_1+v_3=v_1+v_3'.
+       \]
+       Sumando $-v_1$ ambos lados de la igualdad, obtenemos que $v_3=v_3'$, de lo que se sigue el resultado.
+       \item Sea $v \in V$. En consecuencia existe $-v\in V$. Por distributividad en la suma de $F$, 
+       \begin{align*}
+        0v &= (0+0)v \\
+        &= 0v+0v.
+       \end{align*}
+       Puesto que $0v\in V$, existe $-0v\in V$. Luego, de la igualdad antes mencionada, se sigue que,
+       \[
+       0v+(-0v)=0v+(0v+(-0v)) \implies 0=0v,
+       \]
+       donde dicho resultado, puesto que $v$ fue arbitario, se cumple para todo $v \in V$. Por otra parte, nuevamente,
+       de la distributividad en $F$, y de la propiedad demostrada previamente se sigue que
+       \begin{align*}
+            v+(-1)v&=(1+(-1))v \\
+            &=(0)v \\
+            &=0.
+       \end{align*}
+       Luego, de la asociatividad y conmutatividad de la suma en $V$, sumando $-v$ al a igualdad anterior, tenemos que
+       \begin{align*}
+            v+(-1)v+(-v)=0+(-v) &\implies (v+(-v))+(-1)v=-v \\
+            &\implies (-1)v=-v,
+       \end{align*}
+       y apelando a la arbitrariedad de $v$, se sigue el resultado para $v \in V$. $\blacksquare$
+    \end{enumerate}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 2, Tarea 05, Álgebra Lineal I}]
+    (2 puntos) Considera $V=\left\{(x_1,x_2):x_1,x_2\in \mathbb{C}\right\}$ y define las operaciones:
+    \begin{align*}
+        +:V\times V &\rightarrow V \\
+        \left((x_1,x_2),(y_1,y_2)\right) &\mapsto (x_1+y_1+1,x_2+y_2+1) \\
+        \cdot : \mathbb{C} \times V &\rightarrow V \\
+        \left(c,(x_1,x_2)\right) &\mapsto (cx_1+c-1, cx_2+c-1)
+    \end{align*}
+    ¿Es $V$ un espacio vectorial sobre $\mathbb{C}$ con estas operaciones? (justifica tu respuesta).
+\end{mdframed}
+
+\begin{Sol}
+    Probaremos que $V$ es un espacio vectorial. En principio, notemos que, para $x_1,x_2,y_1,y_2,c,1 \in \mathbb{C}$,
+    por cerradura de $\mathbb{C}$ bajo suma y producto, afirmamos que
+    \[
+    x_1+y_1+1, x_2+y_2+1, cx_1+c-1,cx_2+c-1 \in \mathbb{C},
+    \]
+    y en consecuencia, de las definiciones de suma y producto escalar en $V$, decimos que dicho conjunto es cerrado
+    bajo dichas operaciones.
+
+    Sean $v_1=(x_1,x_2),v_2=(y_1,y_2), v_3=(z_1,z_2) \in V$ arbitrarios.
+    De la definición de suma en $V$, tenemos que
+    \begin{align*}
+        (v_1+v_2)+v_3&=(x_1+y_1+1,x_2+y_2+1)+v_3 \\
+        &=((x_1+y_1+1)+z_1+1,(x_2+y_2+1)+z_2+1).
+    \end{align*}
+    Luego, por conmutatividad y asociatividad de la suma en $\mathbb{C}$, se tiene la siguiente igualdad
+    \[
+    ((x_1+y_1+1)+z_1+1,(x_2+y_2+1)+z_2+1)=(x_1+y_1+z_1+2,x_2+y_2+z_2+2),
+    \]
+    y en consecuencia,
+    \[
+    (v_1+v_2)+v_3=(x_1+y_1+z_1+2,x_2+y_2+z_2+2). \tag{1}
+    \]
+    Por otra parte, tenemos que
+    \begin{align*}
+        v_1+(v_2+v_3)&=v_1+(y_1+z_1+1,y_2+z_2+1) \\
+        &=(x_1+(y_1+z_1+1)+1,x_2+(y_2+z_2+1)+1).
+    \end{align*}
+    Luego, por asociatividad de $\mathbb{C}$,
+    \[
+    (x_1+(y_1+z_1+1)+1,x_2+(y_2+z_2+1)+1)=(x_1+y_1+z_1+2,x_2+y_2+z_2+2),
+    \]
+    de lo que se sigue
+    \[
+    v_1+(v_2+v_3)=(x_1+y_1+z_1+2,x_2+y_2+z_2+2).
+    \]
+    De la igualdad anterior y de la mencionada en (1), afirmamos que $v_1+(v_2+v_3)=(v_1+v_2)+v_3,$ probando así que
+    que la suma es asociativa en $V$. Ahora, como ya hemos visto,
+    \[
+    v_1+v_2=(x_1+y_1+1,x_2+y_2+1). \tag{2}
+    \]
+    Por otra parte, de la definición de suma también sabemos que
+    \[
+    v_2+v_1=(y_1+x_1+1,y_2+x_2+1),
+    \]
+    que por conmutatividad de la suma en $\mathbb{C}$, 
+    \[
+    (y_1+x_1+1,y_2+x_2+1)=(x_1+y_1+1,x_2+y_2+1),
+    \]
+    de lo que, aunado a (2), implica que $v_1+v_2=v_2+v_1$, probando así la conmutatividad de la suma en $V$. Por otra parte,
+    tomemos $(-1,-1) \in V$. Notemos que
+    \begin{align*}
+        v_1+(-1,-1)&=(x_1+(-1)+1,x_2+(-1)+1) \\
+        &=(x_1,x_2).
+    \end{align*}
+    Puesto que $v_1$ fue arbitrario, lo anterior se cumple para todo $v \in V$, siendo así que existe $0 \in V$ y es justamente $(-1,-1)$.
+    Tomemos ahora $(-x_1-2,-x_2-2) \in \mathbb{C}$. Se tiene entonces que
+    \begin{align*}
+        v_1+(-x_1-2,-x_2-2)&=(x_1+(-x_1-2)+1,x_2+(-x_2-2)+1) \\
+        &=((x_1-x_1)-2+1,(x_2-x_2)-2+1) \\
+        &=(-1,-1)
+    \end{align*}
+    dónde este último es justamente el $0$ de $V$, probando así que para todo $v \in V$ existe $-v \in V$ tal que $v+(-v)=0$.
+    Como siguiente punto, de la definición de producto escalar, tomando $1 \in \mathbb{C}$ tenemos que
+    \begin{align*}
+        1\cdot v_1&=(1x_1+1-1, 1x_2+1-1) \\
+        &=(x_1,x_2) \\
+        &=v_1,
+    \end{align*}
+    probando así que para todo $v \in V$, $1\cdot v=v$. En siguiente instancia, nuevamente, de la definición de producto escalar, aunado a las propiedades
+    de suma y producto en $\mathbb{C}$,
+    tomando $a_1,a_2 \in \mathbb{C}$, se tiene que
+    \begin{align*}
+        (a_1\cdot a_2)v_1&=((a_1a_2)x_1+(a_1a_2)-1,(a_1a_2)x_2+(a_1a_2)-1) \\
+        &=((a_1a_2)x_1+(a_1a_2)-a_1+a_1-1,(a_1a_2)x_2+(a_1a_2)-a_1+a_1-1) \\
+        &=(a_1(a_2x_1+a_2-1)+a_1-1,a_1(a_2x_2+a_2-1)+a_1-1) \\
+        &=a_1\cdot (a_2x_1+a_2-1,a_2x_2+a_2-1) \\
+        &=a_1(a_1\cdot v_1),
+    \end{align*}
+    probando así la asociatividad del producto escalar. Como penúltimo paso, hacemos ver que,
+    de la suma y del producto escalar en $V$, y de las propiedades de $\mathbb{C}$ como campo, afirmamos que
+    \begin{align*}
+        a_1(v_1+v_2)&=a_1(x_1+y_1+1,x_2+y_2+1) \\
+        &=(a_1(x_1+y_1+1)+a_1-1,a_1(x_2+y_2+1)+a_1-1) \\
+        &=(a_1x_1+a_1y_1+a_1+a_1-1,a_1x_2+a_1y_2+a_1+a_1-1) \\
+        &=(a_1x_1+a_1y_1+a_1+a_1+1-1-1,a_1x_2+a_1y_2+a_1+a_1+1-1-1) \\
+        &=((a_1x_1+a_1-1)+(a_1y_1+a_1-1)+1,(a_1x_2+a_1-1)+(a_1y_2+a_1-1)+1) \\
+        &=((a_1x_1+a_1-1),(a_1x_2+a_1-1))+((a_1y_1+a_1-1),(a_1y_2+a_1-1)) \\
+        &=a_1(x_1,x_2)+a_1(y_1,y_2) \\
+        &=a_1\cdot v_1+a_1\cdot v_2
+    \end{align*}
+    de lo que se colige la distributividad en la suma de $V$. \\
+    Finalmente, reiterando el uso de la suma y el producto escalar en $V$, y recurriendo a las propiedades de suma y producto en $\mathbb{C}$, decimos que
+    \begin{align*}
+        (a_1+a_2)v_1&=((a_1+a_2)x_1+(a_1+a_2)-1,(a_1+a_2)x_2+(a_1+a_2)-1) \\
+        &=(a_1x_1+a_2x_1+a_1+a_2-1,a_1x_2+a_2x_2+a_1+a_2-1) \\
+        &=(a_1x_1+a_2x_1+a_1+a_2+1-1-1,a_1x_2+a_2x_2+a_1+a_2+1-1-1) \\
+        &=((a_1x_1+a_1-1)+(a_2x_1+a_2-1)+1,(a_1x_2+a_1-1)+(a_2x_2+a_2-1)+1) \\
+        &=(a_1x_1+a_1-1,a_1x_2+a_1-1)+(a_2x_1+a_2-1,a_2x_2+a_2-1) \\
+        &=a_1(x_1,x_2)+a_2(x_1,x_2) \\
+        &=a_1\cdot v_1+a_2\cdot v_1,
+    \end{align*}
+    con lo que se demuestra la distributividad en la suma de $\mathbb{C}$. Así pues, probadas ya las propiedades antes mencionadas, concluimos que en efecto, $V$ es
+    un campo vectorial sobre $\mathbb{C}$. $\blacksquare$
+\end{Sol}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 3, Tarea 05, Álgebra Lineal I}]
+    (2 puntos) Considera el espacio vectorial usual $\mathbb{R}^n$ sobre $\mathbb{R}$, determina cuáles de los siguientes
+    subconjuntos son subespacios vectoriales de $\mathbb{R}^n$:
+    \begin{enumerate}[a)]
+        \item $W=\left\{(a_1,...,a_n)\in \mathbb{R}^n:a_1\geq 0\right\}$
+        \item $W=\left\{(a_1,...,a_n)\in \mathbb{R}^n:a_1+3a_2=a_3\right\}$,
+        \item $W=\left\{(a_1,...,a_n)\in \mathbb{R}^n:a_1=a_2\right\}$,
+        \item $W=\left\{(a_1,...,a_n)\in \mathbb{R}^n:a_j \in \mathbb{Q}\text{ para todo }1\leq j \leq n\right\}$,
+    \end{enumerate}
+    justifica tu respuesta.
+\end{mdframed}
+
+\textit{\textbf{Solución.}}
+    \begin{enumerate}[a)]
+        \item Tomemos $v=(a_1,...,a_n)$, tal que $a_1>0$ (de lo que se sigue $v\in W$). Luego, del producto escalar, tomando $-1\in \mathbb{R}$, tenemos que
+        \[
+        -1\cdot v=-(a_1,...,a_n)=(-a_1,...,-a_n).
+        \]
+        Puesto que por hipótesis, $a_1 > 0$, sabemos que $-a_1<0$, de lo que aseveramos que $-v\notin W$, mostrando así
+        que $W$ no es cerrado bajo producto escalar y por lo tanto no es subespacio de $\mathbb{R}^n$ sobre $\mathbb{R}$.
+        \item Para demostrar que $W$ es subespacio vectorial de $R^n$ sobre $\mathbb{R}$, hemos de probar que es cerrrado bajo suma de $W$, bajo producto escalar y que contiene al $0,1\in \mathbb{R}^n$.
+        \\ Tomemos $v_1=(a_1,a_2,a_3,...,a_n),v_2=(b_1,b_2,b_3,...,b_n)$, $v_1,v_2 \in W$ arbitrarios. Definimos $v_3=(c_1,c_2,c_3,...,c_n)$ como la suma de $v_1+v_2$. En consecuencia,
+        \begin{align*}
+            v_3&=v_1+v_2 \\
+            &=(a_1,a_2,a_3,...,a_n)+(b_1,b_2,b_3,...,b_n)\\
+            &=(a_1+b_1,a_2+b_2,a_3+b_3,..,a_n+b_n). \tag{1}
+        \end{align*}
+        Tenemos que por hipótesis
+        \[
+        a_1+3a_2=a_3 \quad b_1+3b_2=b_3. \tag{2}
+        \]
+        Luego, de la igualdad en (1), sabemos que
+        \[
+        c_1=a_1+b_1, \quad c_2=a_2+b_2 \quad c_3=a_3+b_3.
+        \]
+        De las igualdades anteriores, de (2), y de la distributividad, conmutatividad y asociatividad en $\mathbb{R}$, se sigue que
+        \begin{align*}
+            c_1+c_2&=(a_1+b_1)+3(a_2+b_2) \\
+            &=a_1+b_1+3a_2+3b_2 \\
+            &=(a_1+3a_2)+(b_1+3b_2) \\
+            &=a_3+b_3 \\
+            &=c_3,
+        \end{align*}
+        probando así que $v_3 \in W$. Procedamos con el producto escalar. Sea $v_1$ como antes y $t\in \mathbb{R}$ arbitrario. Definammos $tv_1=(z_1,z_2,z_3,...,z_n)$.
+        Tenemos entonces que
+        \begin{align*}
+            tv_1&=t(a_1,a_2,a_3,...,a_n) \\
+            &=(ta_1,ta_2,ta_3,...,ta_n). \tag{3}
+        \end{align*}
+        Ahora, multiplicando la primera igualdad de (1) por $t$, de la distributividad y conmutatividad en $\mathbb{R}$ se tiene que
+        \begin{align*}
+            ta_3&=t(a_1+3a_2) \\
+            &=ta_1+t3a_2 \\
+            &=ta_1+3(ta_2),
+        \end{align*}
+        y puesto que de (3) sabemos que $z_1+3z_2=ta_1+3(ta_2)$ y $ta_3=z_3$, decimos que $z_1+3z_2=z_3$, probando así que $tv_1\in W$. De ello, puesto que, por el ejercicio $1$, $(-1)v=v$ y $0v=0$,
+        se sigue que $0 \in W$ y para todo $v \in W,$ $-v \in W$, concluyendo así que $W\subset R^n.$
+        \item Sean $v_1=(a_1,a_2,...,a_n),v_2=(b_1,...,b_n)$, $v_1,v_2 \in W$ arbitrarios. Tenemos que
+        \begin{align*}
+            v_1+v_2&=(a_1,a_2,...,a_n)+(b_1,b_2,...,b_n) \\
+            &=(a_1+b_1,a_2+b_2,...,a_n+b_n).
+        \end{align*}
+        Puesto que por hipótesis $a_1=a_2$ y $b_1=b_2$, se sigue que $a_1+b_1=a_2+b_2$, y dada nuestra definición de $v_1+v_2$, afirmamos también que
+        $v_1+v_2\in W$, y en consecuencia, $W$ es cerrado bajo la suma. Por otra parte, siendo $v_1$ como antes, y $t\in \mathbb{R}$. Tenemos entonces que
+        \begin{align*}
+            tv_1&=t(a_1,a_2,...,a_n) \\
+            &=(ta_1,ta_2,...,ta_n). \tag{4}
+        \end{align*}
+        Luego, dado que $v_1 \in W$, $a_1=a_2$, se sigue que $ta_1=ta_2$, y dada la igualdad en (4), concluimos que $tv_1\in W,$ con lo que queda probado que $W$ es cerrado bajo producto escalar. En consecuencia,
+        nuevamente, por el ejercicio 1, inciso (c), decimos que $0 \in W$ y dado $v \in W$, se garantiza que $-v\in W$.
+        De ello y dado que ya habíamos probado que es cerrado bajo suma, se sigue que $W\subset \mathbb{R}^n$.
+        \item Sea $v=(a_1,...,a_n)\in W$. Notemos que del producto escalar se sigue que
+        \[
+        \sqrt{2}v=\sqrt{2}(a_1,...,a_n)=\left(\sqrt{2}a_1,...,\sqrt{2}a_n\right).
+        \]
+        Puesto que el producto de racional por irracional da otro irracional, decimos que $\sqrt{2}a_1 \notin \mathbb{Q}$.
+        De lo anterior afirmamos que $\sqrt{2}v\notin W$, concluyendo así que $W$ no es cerrado bajo producto escalar y por la tanto no es subespacio de $\mathbb{R}^n$. $\blacksquare$
+    \end{enumerate}
+
+\newpage
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 4, Tarea 05, Álgebra Lineal I}]
+    (1 punto) Sean $W_1,W_2$ subespacios vectoriales de un espacio vectorial $V$ sobre el campo $F$. Demuestra que si $W_1\cup W_2$ es un subespacio vectorial de $V$
+    entonces uno de los espacios $W_j$ está contenido en el otro.
+\end{mdframed}
+
+\begin{Sol}
+    A priori, no nos importa la intersección, puesto que justamente se encuentra en ambos subespacios. Tomemos entonces $\alpha_1 \in W_1\setminus W_2$ y $\alpha_2 \in W_2\setminus W_1$. Dado que $\alpha_1,\alpha_2 \in W_1\cup W_2,$
+    se sigue que $\alpha_1+\alpha_2\in W_1\cup W_2$. Puesto que por hipótesis, no está en la intersección, está en $w_1$ o $W_2$. Supongamos que $\alpha_1+\alpha_2 \in W_1$. Dado que $\alpha_1 \in W_1$, puesto que este último es espacio vectorial, se cumple que $-\alpha_1 \in W_1$,
+    y además
+\begin{align*}
+    (\alpha_1+\alpha_2)-\alpha_1 \in W_1 &\iff (\alpha_1-\alpha_1)+\alpha_2 \in W_1 \\
+     &\iff \alpha_2 \in W_1,
+\end{align*}
+    lo que contradice que $\alpha \notin W_1$, afirmando entonces que $\alpha_2 \in W_1$, y puesto que fue arbitrario, se sigue que $W_2\subset W_1$.
+    Por otra parte, si suponemos que $\alpha_1+\alpha_2 \in W_2$, puesto que $w_2$ es espacio vectorial, como $\alpha_2 \in W_2$, entonces $-\alpha_2 \in W_2$ y en consecuencia
+\begin{align*}
+    (\alpha_1+\alpha_2)-\alpha_2 \in W_2 &\iff \alpha_1+(\alpha_2-\alpha_2) \in W_2 \\
+     &\iff \alpha_1 \in W_2,    
+\end{align*}
+    contradiciendo el hecho de que $\alpha_1 \notin W_2$. Decimos entonces que $\alpha_1 \in W_2$, y puesto que fue arbitrario $W_1 \subset W_2$, de lo que se sigue el resultado. $\blacksquare$
+\end{Sol}
+
+\begin{mdframed}[style=mdpurplebox, frametitle={Ejercicio 5, Tarea 05, Álgebra Lineal I}]
+    (2 pts) Considera el $\mathbb{R}-$espacio vectorial, $V=\left\{f:\mathbb{R}\rightarrow\mathbb{R}|f \text{ es una función continua}\right\}$. Demuestra que la
+    función $f(x)=\sin(x)$ no es combinación lineal de las funciones $x,x^2,x^3$ (puedes usar todo lo que sabes de tus clases de cálculo).
+\end{mdframed}
+
+\begin{Sol}
+    Procedamos por contradicción. Supongamos que existen $a_1,a_2,a_3 \in \mathbb{R}$ tales que
+    $\sin(x)=a_1x+a_2x^2+a_3x^3$. Notemos que
+    \[
+    \lim_{x\rightarrow \infty}a_1x+a_2x^2+a_3x^3,
+    \]
+    existe. En consecuencia dada la igualdad de nuestra hipótesis, $\lim_{x\rightarrow\infty}\sin(x)$ también debería de existir, pero esto es una contradicción, de lo que se sigue el resultado. $\blacksquare$
+\end{Sol}
+
+\end{document}
