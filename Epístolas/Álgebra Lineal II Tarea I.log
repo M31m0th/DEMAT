@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.31)  21 SEP 2026 10:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.9.21)  21 SEP 2026 19:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/wicar/Documentos/Epístolas/Álgebra Lineal II Tarea I.tex"
-(/home/wicar/Documentos/Epístolas/Álgebra Lineal II Tarea I.tex
+**"/home/uicab/DEMAT/Epístolas/Álgebra Lineal II Tarea I.tex"
+(/home/uicab/DEMAT/Epístolas/Álgebra Lineal II Tarea I.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/share/texmf-dist/tex/latex/koma-script/scrartcl.cls
@@ -1156,12 +1156,12 @@ L3 programming layer <2020/03/25>
  ) 
 Here is how much of TeX's memory you used:
  46296 strings out of 467525
- 1058857 string characters out of 5425861
+ 1058842 string characters out of 5425861
  1793160 words of memory out of 5000000
  74386 multiletter control sequences out of 15000+600000
  644165 words of font info for 134 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 123i,20n,130p,11295b,1133s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 123i,20n,130p,11290b,1133s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on "Álgebra Lineal II Tarea I.pdf" (6 pages, 181949 bytes).
 PDF statistics:

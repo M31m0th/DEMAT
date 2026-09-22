@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1790009345.5458 "/home/wicar/Documentos/Epístolas/Álgebra Lineal II Tarea I.tex" "Álgebra Lineal II Tarea I.pdf" "Álgebra Lineal II Tarea I" 1790009348.31846 0
-  "/home/wicar/Documentos/Epístolas/Álgebra Lineal II Tarea I.tex" 1790009345.25763 14441 d2ba352a0c3c7eb2ccc4a9210c5f7005 ""
+["pdflatex"] 1790041240.17541 "/home/uicab/DEMAT/Epístolas/Álgebra Lineal II Tarea I.tex" "Álgebra Lineal II Tarea I.pdf" "Álgebra Lineal II Tarea I" 1790041242.16029 0
+  "/home/uicab/DEMAT/Epístolas/Álgebra Lineal II Tarea I.tex" 1790041239.95667 14441 d2ba352a0c3c7eb2ccc4a9210c5f7005 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1775415801 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1775415801 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1775415801 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -286,12 +286,12 @@
   "/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty" 1775415801 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "/usr/share/texmf-dist/tex/latex/zref/zref-base.sty" 1775415801 20785 198a9cb2e04238d92c320d0d9edbd76a ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1775415801 43569 fd570f2fa160877d211e859f687312ba ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1780285975 5541339 b32eb00eb34cd5c925a7827d916d9dbd ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1780285869 3765591 afd6ba0fcaa8ef610177b8868f15ee94 ""
-  "evan.sty" 1789843536.60037 28389 b7f7b5f76beb4028ff3ef8a4650c2f41 ""
-  "Álgebra Lineal II Tarea I.aux" 1790009348.23333 568 f6de74579fbdf26a3410276217524c10 "pdflatex"
-  "Álgebra Lineal II Tarea I.pre" 1790009346.64732 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Álgebra Lineal II Tarea I.tex" 1790009345.25763 14441 d2ba352a0c3c7eb2ccc4a9210c5f7005 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1790041049 5541339 b32eb00eb34cd5c925a7827d916d9dbd ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790040945 3765596 2fccfe14c0b35a6fefc1e1f98e58f429 ""
+  "evan.sty" 1789843536.6 28389 b7f7b5f76beb4028ff3ef8a4650c2f41 ""
+  "Álgebra Lineal II Tarea I.aux" 1790041242.06796 568 f6de74579fbdf26a3410276217524c10 "pdflatex"
+  "Álgebra Lineal II Tarea I.pre" 1790041240.72778 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Álgebra Lineal II Tarea I.tex" 1790041239.95667 14441 d2ba352a0c3c7eb2ccc4a9210c5f7005 ""
   (generated)
   "Álgebra Lineal II Tarea I.aux"
   "Álgebra Lineal II Tarea I.log"

@@ -1,7 +1,7 @@
-PWD /home/wicar/Documentos/Epístolas
+PWD /home/uicab/DEMAT/Epístolas
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/wicar/Documentos/Epístolas/Álgebra Lineal II Tarea I.tex
+INPUT /home/uicab/DEMAT/Epístolas/Álgebra Lineal II Tarea I.tex
 OUTPUT Álgebra Lineal II Tarea I.log
 INPUT /usr/share/texmf-dist/tex/latex/koma-script/scrartcl.cls
 INPUT /usr/share/texmf-dist/tex/latex/koma-script/scrartcl.cls
